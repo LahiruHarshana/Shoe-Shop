@@ -36,12 +36,10 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(length = 10)
-    private UserRole role; // ENUM: ADMIN, USER
+    private UserRole role;
     @ManyToOne
     @JoinColumn(name = "employee_id")
-    private Employee employee; // Employee who is related to this user
-
-
+    private Employee employee;
     public enum UserRole {
         ADMIN,
         USER

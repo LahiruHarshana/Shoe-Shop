@@ -40,8 +40,4 @@ public class AdminPanel {
     @Column(name = "most_sale_item_qty")
     private Integer mostSaleItemQuantity;
 
-    public static class AdminPanelPK implements Serializable {
-        private String id;
-    }
-
 }
