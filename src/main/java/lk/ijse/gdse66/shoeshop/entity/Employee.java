@@ -29,6 +29,7 @@ public class Employee {
     @Column(length = 50)
     private String employeeName;
 
+    @Lob
     private String employeeProfilePic;
 
     @Column(length = 10)
