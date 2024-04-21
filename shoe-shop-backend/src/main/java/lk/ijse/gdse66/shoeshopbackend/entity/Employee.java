@@ -1,4 +1,4 @@
-package lk.ijse.gdse66.shoeshop.entity;
+package lk.ijse.gdse66.shoeshopbackend.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

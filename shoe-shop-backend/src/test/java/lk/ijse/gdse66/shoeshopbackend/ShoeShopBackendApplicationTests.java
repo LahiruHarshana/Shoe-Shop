@@ -1,10 +1,10 @@
-package lk.ijse.gdse66.shoeshop;
+package lk.ijse.gdse66.shoeshopbackend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ShoeShopApplicationTests {
+class ShoeShopBackendApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>lk.ijse.gdse66</groupId>
-	<artifactId>shoe-shop</artifactId>
+	<artifactId>shoe-shop-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>shoe-shop</name>
-	<description>Demo project for Spring Boot</description>
+	<name>shoe-shop-backend</name>
+	<description>AAD final Couse Work</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
