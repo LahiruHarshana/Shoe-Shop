@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface UserService {
     public Integer saveUser(UserDTO userDTO);
     public Integer disable(String id);

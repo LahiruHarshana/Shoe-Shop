@@ -1,5 +1,6 @@
 package lk.ijse.gdse66.shoeshopbackend.controller;
 
+import lk.ijse.gdse66.shoeshopbackend.dto.PaginationDTO;
 import lk.ijse.gdse66.shoeshopbackend.dto.ResponseDTO;
 import lk.ijse.gdse66.shoeshopbackend.dto.UserDTO;
 import lk.ijse.gdse66.shoeshopbackend.service.UserService;
@@ -32,7 +33,7 @@ public class UserController {
     }
 
     @PutMapping("/dis/{id}")
-    public ResponseDTO disabledUser(@PathVariable Long id) {
+    public ResponseDTO disabledUser(@PathVariable String id) {
         try {
             return new ResponseDTO("User disabled successfully", userService.disable(id));
         } catch (Exception e) {
@@ -41,7 +42,7 @@ public class UserController {
     }
 
     @PutMapping("/enb/{id}")
-    public ResponseDTO enabledUser(@PathVariable Long id) {
+    public ResponseDTO enabledUser(@PathVariable String id) {
         try {
             return new ResponseDTO("User enabled successfully", userService.enable(id));
         } catch (Exception e) {
@@ -50,14 +51,7 @@ public class UserController {
     }
     @GetMapping("/{type}/{value}")
     public ResponseDTO getSelectedUser(@PathVariable String type, @PathVariable String value) {
-        SelectByTypeDTO select = new SelectByTypeDTO(type, value);
-        try {
-            HashMap<String, Object> map = new HashMap<>();
-            map.put("user", userService.findByType(select));
-            return new ResponseDTO("User found successfully",200, map);
-        } catch (Exception e) {
-            return new ResponseDTO(e.getMessage(), 500);
-        }
+        return null;
     }
 
     @PostMapping("/pagination")

@@ -27,8 +27,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Integer saveUser(UserDTO userDTO) {
-
-            System.out.println("User service"+userDTO);
             userDTO.setActive(true);
             userRepository.save(modelMapper.map(userDTO, User.class));
             return 200;
