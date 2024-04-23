@@ -1,6 +1,7 @@
 package lk.ijse.gdse66.shoeshopbackend.entity;
 
 import jakarta.persistence.*;
+import lk.ijse.gdse66.shoeshopbackend.dto.SaleDetailsDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author : L.H.J
@@ -86,4 +88,7 @@ public class Sale {
 
     @Column(name = "is_active", columnDefinition = "TINYINT(1)")
     private boolean isActive;
+
+    @OneToMany(mappedBy = "sale",fetch = FetchType.LAZY,cascade = CascadeType.ALL,targetEntity = SaleDetails.class)
+    List<SaleDetailsDTO> saleDetails;
 }

@@ -26,7 +26,7 @@ public class SaleDetails {
     @ManyToOne
     @JoinColumn(name = "order_no", referencedColumnName = "order_no")
     private Sale sale;
-    
+
     @ManyToOne
     @JoinColumn(name = "item_code", referencedColumnName = "item_code")
     private Inventory inventory;
