@@ -20,6 +20,4 @@ public class CustomerController {
         System.out.println("Customer saved");
     }
 
-
-
 }

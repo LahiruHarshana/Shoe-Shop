@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 /**
  * @author : L.H.J
  * @File: userDTO
@@ -16,10 +14,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class userDTO {
+public class UserDTO {
     private String userId;
-    private String employeeCode;
-    private String employeeName;
+//    private String employeeCode;
+    private String username;
     private String email;
     private String password;
     private UserRole role;

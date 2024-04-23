@@ -2,6 +2,7 @@ package lk.ijse.gdse66.shoeshopbackend.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -23,9 +24,11 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "user")
+@Builder
 public class User {
     @Id
-    private String user_id;
+    @Column(name = "user_id")
+    private String userId;
 
 //    @OneToOne
 //    @JoinColumn(name = "employee_id")
@@ -37,7 +40,7 @@ public class User {
     @Column(length = 50)
     private String email;
 
-    @Column(length = 50)
+    @Column
     private String password;
 
     @Enumerated(EnumType.STRING)

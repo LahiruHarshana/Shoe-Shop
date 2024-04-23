@@ -1,9 +1,12 @@
 package lk.ijse.gdse66.shoeshopbackend.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lk.ijse.gdse66.shoeshopbackend.dto.ResponseDTO;
+import lk.ijse.gdse66.shoeshopbackend.dto.UserDTO;
+import lk.ijse.gdse66.shoeshopbackend.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
 
 /**
  * @author : L.H.J
@@ -15,14 +18,61 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/user")
 public class UserController {
 
+    @Autowired
+    UserService userService;
+
     @PostMapping
-    public void saveUser(){
-        System.out.println("User saved");
+    public ResponseDTO saveUser(@RequestBody UserDTO userDTO){
+        try {
+            System.out.println("User save"+userDTO);
+            return new ResponseDTO("User saved successfully", userService.saveUser(userDTO));
+        } catch (Exception e) {
+            return new ResponseDTO(e.getMessage(), 500);
+        }
     }
 
-    @GetMapping
-    public void getUser(){
-        System.out.println("User get");
+    @PutMapping("/dis/{id}")
+    public ResponseDTO disabledUser(@PathVariable Long id) {
+        try {
+            return new ResponseDTO("User disabled successfully", userService.disable(id));
+        } catch (Exception e) {
+            return new ResponseDTO(e.getMessage(), 500);
+        }
+    }
+
+    @PutMapping("/enb/{id}")
+    public ResponseDTO enabledUser(@PathVariable Long id) {
+        try {
+            return new ResponseDTO("User enabled successfully", userService.enable(id));
+        } catch (Exception e) {
+            return new ResponseDTO(e.getMessage(), 500);
+        }
+    }
+    @GetMapping("/{type}/{value}")
+    public ResponseDTO getSelectedUser(@PathVariable String type, @PathVariable String value) {
+        SelectByTypeDTO select = new SelectByTypeDTO(type, value);
+        try {
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("user", userService.findByType(select));
+            return new ResponseDTO("User found successfully",200, map);
+        } catch (Exception e) {
+            return new ResponseDTO(e.getMessage(), 500);
+        }
+    }
+
+    @PostMapping("/pagination")
+    public ResponseDTO getAllUsers(@RequestBody PaginationDTO paginationDTO) {
+        try {
+            HashMap<String, Object> map = new HashMap<>();
+            if (paginationDTO == null) {
+                map.put("users", userService.findAllUsers());
+            }else {
+                map.put("users", userService.paginationUsers(paginationDTO));
+            }
+            return new ResponseDTO("Users found successfully",200, map);
+        } catch (Exception e) {
+            return new ResponseDTO(e.getMessage(), 500);
+        }
     }
 
 }
