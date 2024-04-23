@@ -34,8 +34,10 @@ public class SaleServiceImpl implements SaleService {
     }
     @Override
     public Integer saveSale(SaleDTO saleDTO) {
+
         saleDTO.setActive(true);
         saleRepository.save(modelMapper.map(saleDTO, Sale.class));
+
         return 200;
     }
 

@@ -26,7 +26,7 @@ import java.util.List;
 public class Customer {
     @Id
     @Column(name = "customer_id")
-    private String customerCode;
+    private String customerId;
 
     @Column(name = "customer_name")
     private String customerName;
@@ -98,8 +98,8 @@ public class Customer {
     @Column(name = "is_active", columnDefinition = "TINYINT(1)")
     private boolean isActive;
 
-    @OneToMany( mappedBy = "customer",targetEntity = Sale.class)
-    private List<Sale> sales;
+    @OneToMany(mappedBy = "customer",targetEntity = Sale.class)
+    List<Sale> sales;
     enum Gender {
         MALE, FEMALE, OTHER
     }

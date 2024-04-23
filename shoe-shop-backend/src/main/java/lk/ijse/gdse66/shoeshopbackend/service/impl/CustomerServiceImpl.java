@@ -52,7 +52,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Integer updateCustomer(CustomerDTO customerDTO) {
-        if (customerRepository.existsById(customerDTO.getCustomerCode())) {
+        if (customerRepository.existsById(customerDTO.getCustomerId())) {
             Customer entity = modelMapper.map(customerDTO, Customer.class);
             customerRepository.save(entity);
             return 200;

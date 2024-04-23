@@ -19,7 +19,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerDTO{
-    private String customerCode;
+    private String customerId;
     private String customerName;
     private String userId;
     private Gender gender;
