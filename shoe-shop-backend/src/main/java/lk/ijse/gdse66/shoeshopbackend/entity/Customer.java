@@ -4,8 +4,12 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author : L.H.J
@@ -21,11 +25,15 @@ import java.util.Date;
 @Table(name = "customer")
 public class Customer {
     @Id
-    @Column(name = "customer_code")
+    @Column(name = "customer_id")
     private String customerCode;
 
     @Column(name = "customer_name")
     private String customerName;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "gender")
@@ -71,10 +79,30 @@ public class Customer {
     @Temporal(TemporalType.TIMESTAMP)
     private Date recentPurchaseDateTime;
 
+    @CreationTimestamp
+    @Column(name = "create_date", updatable = false, nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime createDate;
+
+    @Column(name = "create_by")
+    private String createBy;
+
+    @UpdateTimestamp
+    @Column(name = "modify_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime modifyDate;
+
+    @Column(name = "modify_by")
+    private String modifyBy;
+
+    @Column(name = "is_active", columnDefinition = "TINYINT(1)")
+    private boolean isActive;
+
+    @OneToMany( mappedBy = "customer",fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Sale.class)
+    private List<Sale> sales;
     enum Gender {
         MALE, FEMALE, OTHER
     }
-
     enum LoyaltyLevel {
         GOLD, SILVER, BRONZE, NEW
     }
