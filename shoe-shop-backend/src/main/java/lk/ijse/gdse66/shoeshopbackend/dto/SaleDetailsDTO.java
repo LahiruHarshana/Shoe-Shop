@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
  * @mailto : lharshana2002@gmail.com
  * @created : 2024-04-23, Tuesday
  **/
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
