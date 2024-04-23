@@ -79,7 +79,7 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public List<SupplierDTO> paginationCustomers(PaginationDTO paginationDTO) {
+    public List<SupplierDTO> paginationSupplier(PaginationDTO paginationDTO) {
         return supplierRepository
                 .findAll(CommonUtils.setPagination(paginationDTO.getOffset(), paginationDTO.getLimit(), paginationDTO.getColumnName()))
                 .stream().map(supplier -> modelMapper.map(supplier, SupplierDTO.class)).toList();

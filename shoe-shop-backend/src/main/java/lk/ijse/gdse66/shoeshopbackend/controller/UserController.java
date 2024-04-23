@@ -56,6 +56,8 @@ public class UserController {
 
     @PostMapping("/pagination")
     public ResponseDTO getAllUsers(@RequestBody PaginationDTO paginationDTO) {
+
+        System.out.println("paginationDTO = " + paginationDTO+"hello");
         try {
             HashMap<String, Object> map = new HashMap<>();
             if (paginationDTO == null) {

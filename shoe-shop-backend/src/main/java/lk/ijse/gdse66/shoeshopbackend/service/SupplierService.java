@@ -19,5 +19,5 @@ public interface SupplierService {
     public Integer updateCustomer(SupplierDTO supplierDTO) ;
     public List<SupplierDTO> findAllSupplier() ;
     public Integer enable(String id);
-    public List<SupplierDTO> paginationCustomers(PaginationDTO paginationDTO);
+    public List<SupplierDTO> paginationSupplier(PaginationDTO paginationDTO);
 }

@@ -25,7 +25,7 @@ public class CustomerController {
     CustomerService customerService;
 
     @PostMapping
-    public ResponseDTO saveUser(@RequestBody CustomerDTO customerDTO){
+    public ResponseDTO saveCustomer(@RequestBody CustomerDTO customerDTO){
         try {
             System.out.println("Customer save"+customerDTO);
             return new ResponseDTO("Customer saved successfully", customerService.saveCustomer(customerDTO));
@@ -35,7 +35,7 @@ public class CustomerController {
     }
 
     @PutMapping("/dis/{id}")
-    public ResponseDTO disabledUser(@PathVariable String id) {
+    public ResponseDTO disableCustomer(@PathVariable String id) {
         try {
             return new ResponseDTO("Customer disabled successfully", customerService.disable(id));
         } catch (Exception e) {
@@ -44,7 +44,7 @@ public class CustomerController {
     }
 
     @PutMapping("/enb/{id}")
-    public ResponseDTO enabledUser(@PathVariable String id) {
+    public ResponseDTO enablesCustomer(@PathVariable String id) {
         try {
             return new ResponseDTO("Customer enabled successfully", customerService.enable(id));
         } catch (Exception e) {
@@ -52,20 +52,20 @@ public class CustomerController {
         }
     }
     @GetMapping("/{type}/{value}")
-    public ResponseDTO getSelectedUser(@PathVariable String type, @PathVariable String value) {
+    public ResponseDTO getSelectedCustomer(@PathVariable String type, @PathVariable String value) {
         return null;
     }
 
     @PostMapping("/pagination")
-    public ResponseDTO getAllUsers(@RequestBody PaginationDTO paginationDTO) {
+    public ResponseDTO getAllCustomers(@RequestBody PaginationDTO paginationDTO) {
         try {
             HashMap<String, Object> map = new HashMap<>();
             if (paginationDTO == null) {
-                map.put("users", customerService.findAllCustomers());
+                map.put("customers", customerService.findAllCustomers());
             }else {
-                map.put("users", customerService.paginationCustomers(paginationDTO));
+                map.put("customer", customerService.paginationCustomers(paginationDTO));
             }
-            return new ResponseDTO("Users found successfully",200, map);
+            return new ResponseDTO("Customers found successfully",200, map);
         } catch (Exception e) {
             return new ResponseDTO(e.getMessage(), 500);
         }
