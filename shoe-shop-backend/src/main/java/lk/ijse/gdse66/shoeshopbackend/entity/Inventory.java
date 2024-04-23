@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.util.function.SupplierUtils;
 
 import java.time.LocalDateTime;
 
@@ -39,8 +40,9 @@ public class Inventory {
     @Column(name = "size")
     private Integer size;
 
-    @Column(name = "supplier_code")
-    private String supplierCode;
+    @ManyToOne
+    @JoinColumn(name = "supplier_code")
+    private Supplier supplier;
 
     @Column(name = "supplier_name")
     private String supplierName;
