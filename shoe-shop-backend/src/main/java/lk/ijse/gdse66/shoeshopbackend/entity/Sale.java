@@ -4,7 +4,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -64,4 +67,23 @@ public class Sale {
 
     @Column(name = "cashier_name")
     private String cashierName;
+
+    @CreationTimestamp
+    @Column(name = "create_date", updatable = false, nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime createDate;
+
+    @Column(name = "create_by")
+    private String createBy;
+
+    @UpdateTimestamp
+    @Column(name = "modify_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime modifyDate;
+
+    @Column(name = "modify_by")
+    private String modifyBy;
+
+    @Column(name = "is_active", columnDefinition = "TINYINT(1)")
+    private boolean isActive;
 }
