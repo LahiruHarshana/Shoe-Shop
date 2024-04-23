@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author : L.H.J
@@ -77,6 +78,9 @@ public class Supplier {
 
     @Column(name = "is_active", columnDefinition = "TINYINT(1)")
     private boolean isActive;
+
+    @OneToMany(mappedBy = "supplier",fetch = FetchType.LAZY,cascade = CascadeType.ALL,targetEntity = Inventory.class)
+    List<Inventory> inventories;
     public enum SupplierCategory {
         INTERNATIONAL, LOCAL
     }
