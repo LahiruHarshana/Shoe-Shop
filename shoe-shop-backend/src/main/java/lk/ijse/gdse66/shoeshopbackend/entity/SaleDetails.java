@@ -22,11 +22,12 @@ import java.time.LocalDateTime;
 @Table(name = "sale_details")
 public class SaleDetails {
     @Id
+    private String saleDetailsId;
     @ManyToOne
     @JoinColumn(name = "order_no", referencedColumnName = "order_no")
     private Sale sale;
 
-    @Id
+
     @ManyToOne
     @JoinColumn(name = "item_code", referencedColumnName = "item_code")
     private Inventory inventory;
