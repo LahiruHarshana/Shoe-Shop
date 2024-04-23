@@ -1,19 +1,24 @@
 package lk.ijse.gdse66.shoeshopbackend.service;
 
 
+import lk.ijse.gdse66.shoeshopbackend.dto.PaginationDTO;
 import lk.ijse.gdse66.shoeshopbackend.dto.UserDTO;
 import lk.ijse.gdse66.shoeshopbackend.dto.UserPasswordDTO;
 import lk.ijse.gdse66.shoeshopbackend.entity.User;
+import lk.ijse.gdse66.shoeshopbackend.util.CommonUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public interface UserService {
-    List<User> getAllUsers();
-    User createUser(User user);
-    User getUserById(String id);
-    User changePassword(String id, UserPasswordDTO userPasswordDTO);
+    public Integer saveUser(UserDTO userDTO);
+
+    public Integer disable(String id);
     public Integer updateUser(UserDTO userDTO);
-    Integer saveUser(UserDTO userDTO);
+    public List<UserDTO> findAllUsers();
+
+    public Integer enable(String id);
+
+    public List<UserDTO> paginationUsers(PaginationDTO paginationDTO);
 }
