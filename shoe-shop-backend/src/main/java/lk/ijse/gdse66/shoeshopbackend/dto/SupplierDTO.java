@@ -26,6 +26,9 @@ public class SupplierDTO {
     private String contactNo1;
     private String contactNo2;
     private String email;
+    private String modifyBy;
+    private String createBy;
+    private boolean isActive;
     public enum SupplierCategory {
         INTERNATIONAL, LOCAL
     }

@@ -63,7 +63,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<CustomerDTO> findAllCustomers() {
         return customerRepository.findAll().stream()
-                .map(userEntity -> modelMapper.map(userEntity, CustomerDTO.class)).toList();
+                .map(customer -> modelMapper.map(customer, CustomerDTO.class)).toList();
     }
 
     @Override
@@ -81,7 +81,7 @@ public class CustomerServiceImpl implements CustomerService {
     public List<CustomerDTO> paginationCustomers(PaginationDTO paginationDTO) {
         return customerRepository
                 .findAll(CommonUtils.setPagination(paginationDTO.getOffset(), paginationDTO.getLimit(), paginationDTO.getColumnName()))
-                .stream().map(userEntity -> modelMapper.map(userEntity, CustomerDTO.class)).toList();
+                .stream().map(customer -> modelMapper.map(customer, CustomerDTO.class)).toList();
 
     }
 }
