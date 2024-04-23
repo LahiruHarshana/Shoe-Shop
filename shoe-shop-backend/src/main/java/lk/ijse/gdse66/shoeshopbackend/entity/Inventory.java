@@ -9,6 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.util.function.SupplierUtils;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author : L.H.J
@@ -80,4 +81,7 @@ public class Inventory {
 
     @Column(name = "is_active", columnDefinition = "TINYINT(1)")
     private boolean isActive;
+
+    @OneToMany(mappedBy = "inventory",fetch = FetchType.LAZY,cascade = CascadeType.ALL,targetEntity = SaleDetails.class)
+    List<SaleDetails> saleDetails;
 }

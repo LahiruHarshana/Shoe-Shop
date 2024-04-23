@@ -23,6 +23,7 @@ import java.time.LocalDateTime;
 public class SaleDetails {
     @Id
     private String saleDetailsId;
+
     @ManyToOne
     @JoinColumn(name = "order_no", referencedColumnName = "order_no")
     private Sale sale;
