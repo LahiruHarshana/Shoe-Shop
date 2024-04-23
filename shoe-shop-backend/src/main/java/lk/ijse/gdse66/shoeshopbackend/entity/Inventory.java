@@ -1,6 +1,9 @@
 package lk.ijse.gdse66.shoeshopbackend.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -13,6 +16,9 @@ import java.time.LocalDateTime;
  * @created : 2024-04-21, Sunday
  **/
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "inventory")
 public class Inventory {
