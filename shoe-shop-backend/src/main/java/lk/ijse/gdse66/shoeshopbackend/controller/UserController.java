@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author : L.H.J
@@ -54,6 +55,15 @@ public class UserController {
         return null;
     }
 
+    @GetMapping
+    public List<UserDTO> getAllUsers() {
+        List<UserDTO> userDTOs = userService.findAllUsers();
+        if (!userDTOs.isEmpty()) {
+            return userDTOs;
+        } else {
+            return null;
+        }
+    }
     @PostMapping("/pagination")
     public ResponseDTO getAllUsers(@RequestBody PaginationDTO paginationDTO) {
 

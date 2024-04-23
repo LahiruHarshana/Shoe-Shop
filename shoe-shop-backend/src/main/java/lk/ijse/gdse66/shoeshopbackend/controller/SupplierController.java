@@ -1,14 +1,12 @@
 package lk.ijse.gdse66.shoeshopbackend.controller;
 
-import lk.ijse.gdse66.shoeshopbackend.dto.CustomerDTO;
-import lk.ijse.gdse66.shoeshopbackend.dto.PaginationDTO;
-import lk.ijse.gdse66.shoeshopbackend.dto.ResponseDTO;
-import lk.ijse.gdse66.shoeshopbackend.dto.SupplierDTO;
+import lk.ijse.gdse66.shoeshopbackend.dto.*;
 import lk.ijse.gdse66.shoeshopbackend.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author : L.H.J
@@ -67,6 +65,16 @@ public class SupplierController {
             return new ResponseDTO("Supplier found successfully",200, map);
         } catch (Exception e) {
             return new ResponseDTO(e.getMessage(), 500);
+        }
+    }
+
+    @GetMapping
+    public List<SupplierDTO> getAllSuppliers() {
+        List<SupplierDTO> supplierDTOS = supplierService.findAllSupplier();
+        if (!supplierDTOS.isEmpty()) {
+            return supplierDTOS;
+        } else {
+            return null;
         }
     }
 }

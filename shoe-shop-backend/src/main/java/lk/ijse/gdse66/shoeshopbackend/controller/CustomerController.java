@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author : L.H.J
@@ -49,6 +50,16 @@ public class CustomerController {
             return new ResponseDTO("Customer enabled successfully", customerService.enable(id));
         } catch (Exception e) {
             return new ResponseDTO(e.getMessage(), 500);
+        }
+    }
+
+    @GetMapping
+    public List<CustomerDTO> getAllCustomers() {
+        List<CustomerDTO> customerDTOS = customerService.findAllCustomers();
+        if (!customerDTOS.isEmpty()) {
+            return customerDTOS;
+        } else {
+            return null;
         }
     }
     @GetMapping("/{type}/{value}")
