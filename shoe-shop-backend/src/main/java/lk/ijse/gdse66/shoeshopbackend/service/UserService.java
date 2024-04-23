@@ -13,12 +13,9 @@ import java.util.List;
 @Service
 public interface UserService {
     public Integer saveUser(UserDTO userDTO);
-
     public Integer disable(String id);
     public Integer updateUser(UserDTO userDTO);
     public List<UserDTO> findAllUsers();
-
     public Integer enable(String id);
-
     public List<UserDTO> paginationUsers(PaginationDTO paginationDTO);
 }
