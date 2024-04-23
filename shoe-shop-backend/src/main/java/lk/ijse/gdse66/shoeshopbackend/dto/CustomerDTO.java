@@ -21,6 +21,7 @@ import java.util.Date;
 public class CustomerDTO{
     private String customerCode;
     private String customerName;
+    private String userId;
     private Gender gender;
     private Date joinDate;
     private LoyaltyLevel level;

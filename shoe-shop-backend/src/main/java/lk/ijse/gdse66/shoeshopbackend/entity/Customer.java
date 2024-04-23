@@ -98,7 +98,7 @@ public class Customer {
     @Column(name = "is_active", columnDefinition = "TINYINT(1)")
     private boolean isActive;
 
-    @OneToMany( mappedBy = "customer",fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Sale.class)
+    @OneToMany( mappedBy = "customer",targetEntity = Sale.class)
     private List<Sale> sales;
     enum Gender {
         MALE, FEMALE, OTHER
