@@ -64,7 +64,7 @@ public class WebSecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/auth/***", "/app/api/v1/***", "/app/api/v1/user/dis/**", "/app/api/v1/customer/pagination").permitAll() //Login Register routes are allowed
+                        auth.requestMatchers("/auth/signin", "/app/api/v1/***", "/app/api/v1/user/dis/**", "/app/api/v1/customer/pagination").permitAll() //Login Register routes are allowed
                                 .anyRequest().authenticated()
                 );
 

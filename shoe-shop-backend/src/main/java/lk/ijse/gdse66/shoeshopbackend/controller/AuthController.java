@@ -34,10 +34,11 @@ public class AuthController {
 
     @Autowired
     private JwtUtil jwtUtils;
-
     @PostMapping("/auth/signin")
     public ResponseEntity<?> login(@RequestBody LogInDTO loginDTO) {
+        System.out.println("hi halo");
         System.out.println("AuthController.login");
+        System.out.println(loginDTO);
         Authentication authentication= authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginDTO.getUsername(), loginDTO.getPassword())
         );
