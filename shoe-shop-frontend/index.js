@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .then(token => {
                 localStorage.setItem('token', token);
-                window.location.href = 'home.html';
+                window.location.href = 'Home/home.html';
             })
             .catch(error => {
                 console.error('Error:', error);
