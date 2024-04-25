@@ -70,9 +70,21 @@
                 <label for="inputEmail4" class="form-label">Name</label>
                 <input type="email" class="form-control" id="inputEmail4">
             </div>
+            <div class="col-md-4">
+                <label for="gender" class="form-label">Gender</label>
+                <select id="gender" class="form-select">
+                    <option selected>Choose...</option>
+                    <option>FEMALE</option>
+                    <option>MALE</option>
+                </select>
+            </div>
             <div class="col-md-6">
                 <label for="inputPassword4" class="form-label">DOB</label>
                 <input type="date" class="form-control" id="inputPassword4">
+            </div>
+            <div class="col-md-6">
+                <label for="joinDate" class="form-label">Join Date</label>
+                <input type="date" class="form-control" id="joinDate">
             </div>
             <div class="col-md-6">
                 <label for="buildingNumber" class="form-label">Building Number</label>
@@ -111,8 +123,12 @@
                 </select>
             </div>
             <div class="col-md-2">
-                <label for="inputZip" class="form-label">Zip</label>
-                <input type="text" class="form-control" id="inputZip">
+                <label for="points" class="form-label">Points</label>
+                <input type="text" class="form-control" id="points">
+            </div>
+            <div class="col-md-2">
+                <label for="level" class="form-label">Level</label>
+                <input type="text" class="form-control" id="level">
             </div>
             <div class="col-12">
                 <div class="form-check">
@@ -123,7 +139,7 @@
                 </div>
             </div>
             <div class="col-12">
-                <button type="submit" class="btn btn-primary">Sign in</button>
+                <button type="submit" class="btn btn-primary">Save</button>
             </div>
         </form>
         <button onclick="togglePopup()" style="margin-top: 10px;" class="btn btn-secondary">Close</button>
