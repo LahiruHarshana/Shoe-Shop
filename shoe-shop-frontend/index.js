@@ -1,3 +1,5 @@
+let token = '';
+
 document.addEventListener("DOMContentLoaded", function() {
     const loginButton = document.querySelector('#loginBtn');
 
@@ -19,18 +21,17 @@ document.addEventListener("DOMContentLoaded", function() {
             body: JSON.stringify(requestBody)
         })
             .then(response => {
-                if (response.ok) {
-                    return response.text();
-                } else {
+                if (!response.ok) {
                     throw new Error('Login failed');
                 }
+                return response.text();
             })
-            .then(token => {
-                localStorage.setItem('token', token);
-                window.location.href = 'Home/home.html';
+            .then(data => {
+                token = data;
+                document.getElementById("jwtToken").value = data;
+                console.log('Token received:', data);
+                window.location.href = "Home/home.html";
             })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+            .catch(error => console.error('Error:', error));
     });
 });

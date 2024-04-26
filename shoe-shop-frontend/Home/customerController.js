@@ -27,7 +27,8 @@ document.getElementById("saveBtn").addEventListener("click", function() {
     fetch('http://localhost:8081/app/api/v1/customer', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWhpcnUiLCJpYXQiOjE3MTQwOTgwODgsImV4cCI6MTcxNDE4NDQ4OH0.hvitGteE8HKC3PPj7qOiPNoNQrgD83X3Hl3v4VPzyH8`
         },
         body: jsonData
     })

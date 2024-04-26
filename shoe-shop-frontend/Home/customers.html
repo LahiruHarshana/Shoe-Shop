@@ -152,49 +152,51 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
-<script src="customersController.js"></script>
+<script src="customerController.js"></script>
 <script>
-    // document.getElementById("saveBtn").addEventListener("click", function() {
-    //     console.log('Save button clicked');
-    //     var now = new Date();
-    //     var formData = {
-    //         customerId: document.getElementById("cus_idTxt").value,
-    //         customerName: document.getElementById("inputEmail4").value,
-    //         userId: '1',
-    //         gender: document.getElementById("gender").value,
-    //         joinDate: document.getElementById("joinDate").value,
-    //         level: document.getElementById("level").value,
-    //         totalPoints: document.getElementById("points").value,
-    //         dob: document.getElementById("inputPassword4").value,
-    //         addressLine1: document.getElementById("buildingNumber").value,
-    //         addressLine2: document.getElementById("laneName").value,
-    //         addressLine3: document.getElementById("city").value,
-    //         addressLine4: document.getElementById("state").value,
-    //         addressLine5: document.getElementById("postalCode").value,
-    //         contactNo: document.getElementById("contact").value,
-    //         email: 'lharshana2002@gmail.com',
-    //         recentPurchaseDateTime: now.toISOString(),
-    //         createBy: '',
-    //         modifyBy: '',
-    //         isActive: true
-    //     };
-    //     var jsonData = JSON.stringify(formData);
-    //
-    //     fetch('http://localhost:8081/app/api/v1/customer', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: jsonData
-    //     })
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             console.log('Success:', data);
-    //         })
-    //         .catch((error) => {
-    //             console.error('Error:', error);
-    //         });
-    // });
+    document.getElementById("saveBtn").addEventListener("click", function() {
+        console.log('Save button clicked');
+        var now = new Date();
+        var formData = {
+            customerId: document.getElementById("cus_idTxt").value,
+            customerName: document.getElementById("inputEmail4").value,
+            userId: '1',
+            gender: document.getElementById("gender").value,
+            joinDate: document.getElementById("joinDate").value,
+            level: document.getElementById("level").value,
+            totalPoints: document.getElementById("points").value,
+            dob: document.getElementById("inputPassword4").value,
+            addressLine1: document.getElementById("buildingNumber").value,
+            addressLine2: document.getElementById("laneName").value,
+            addressLine3: document.getElementById("city").value,
+            addressLine4: document.getElementById("state").value,
+            addressLine5: document.getElementById("postalCode").value,
+            contactNo: document.getElementById("contact").value,
+            email: 'lharshana2002@gmail.com',
+            recentPurchaseDateTime: now.toISOString(),
+            createBy: '',
+            modifyBy: '',
+            isActive: true
+        };
+        var jsonData = JSON.stringify(formData);
+
+        fetch('http://localhost:8081/app/api/v1/customer', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWhpcnUiLCJpYXQiOjE3MTQwOTgwODgsImV4cCI6MTcxNDE4NDQ4OH0.hvitGteE8HKC3PPj7qOiPNoNQrgD83X3Hl3v4VPzyH8`
+            },
+            body: jsonData
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    });
+
 </script>
 
 </body>
