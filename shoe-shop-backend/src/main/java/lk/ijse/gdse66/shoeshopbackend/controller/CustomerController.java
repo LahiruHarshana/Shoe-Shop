@@ -26,13 +26,7 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
-
     @PostMapping
-    public void saveCustomer(){
-            System.out.println("Customer save haa hahahahah hahahah = = == == = == = 02930  ");
-
-    }
-    @PostMapping("/save")
     public ResponseDTO saveCustomer(@RequestBody CustomerDTO customerDTO){
         try {
             System.out.println("Customer save"+customerDTO);
