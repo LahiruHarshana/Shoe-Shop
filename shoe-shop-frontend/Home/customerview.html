@@ -107,13 +107,11 @@
         document.getElementById('isActive').textContent = customer.isActive ? 'Yes' : 'No';
     }
 
-    // Helper function to format date
     function formatDate(dateString) {
         if (!dateString) return '';
         const date = new Date(dateString);
         return date.toLocaleDateString();
     }
-    // Function to retrieve URL parameter by name
     function getUrlParameter(name) {
         name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
         const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
@@ -121,14 +119,10 @@
         return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     }
 
-    // Fetch customer ID from URL parameter
     const customerId = getUrlParameter('customerId');
 
     const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWhpcnUiLCJpYXQiOjE3MTQyMzU1MDcsImV4cCI6MTcxNDMyMTkwN30.oPw9pKpyxjEv_vO2ash2YEhhaPEXiEbHOqDcxqJS-4o";
 
-
-    // Use the customer ID to fetch customer data and load it into the table
-    // Example fetch function:
     fetch(`http://localhost:8081/app/api/v1/customer/${customerId}`, {
         method: 'GET',
         headers: {
@@ -138,7 +132,6 @@
     })
         .then(response => response.json())
         .then(customer => {
-            // Load customer data into the table using the loadCustomerData function
             loadCustomerData(customer);
         })
         .catch(error => {
