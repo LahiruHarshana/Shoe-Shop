@@ -84,4 +84,14 @@ public class CustomerServiceImpl implements CustomerService {
                 .stream().map(customer -> modelMapper.map(customer, CustomerDTO.class)).toList();
 
     }
+
+    @Override
+    public CustomerDTO findCustomerById(String customerId) {
+        Customer customerEntity = customerRepository.findById(customerId).orElse(null);
+        if (customerEntity != null) {
+            return modelMapper.map(customerEntity, CustomerDTO.class);
+        }
+        return null;
+    }
+
 }

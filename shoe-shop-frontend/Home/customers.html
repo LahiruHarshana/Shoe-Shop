@@ -148,7 +148,7 @@
                 <td>weligama</td>
                 <td>
                     <div class="button-group d-flex flex-wrap align-items-center">
-                        <a href="#" class="" title="View">
+                        <a href="customerview.html" class="" title="View">
                             <img src="../assets/eye.png" alt="Image">
                         </a>
                         <a href="#" class="" title="Edit">
@@ -291,7 +291,7 @@
                 buttonGroup.className = 'button-group d-flex flex-wrap align-items-center';
 
                 const viewLink = document.createElement('a');
-                viewLink.href = '#';
+                viewLink.href = `customerView.html?customerId=${customer.customerId}`; // Pass customer ID as URL parameter
                 viewLink.title = 'View';
                 viewLink.innerHTML = '<img src="../assets/eye.png" alt="View">';
                 buttonGroup.appendChild(viewLink);
@@ -317,6 +317,10 @@
             });
         }
     }
+
+
+
+
 
 </script>
 

@@ -22,4 +22,5 @@ public interface CustomerService {
     public List<CustomerDTO> findAllCustomers();
     public Integer enable(String id);
     public List<CustomerDTO> paginationCustomers(PaginationDTO paginationDTO);
+    CustomerDTO findCustomerById(String customerId);
 }

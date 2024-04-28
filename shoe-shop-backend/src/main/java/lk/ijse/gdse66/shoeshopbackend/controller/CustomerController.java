@@ -6,6 +6,8 @@ import lk.ijse.gdse66.shoeshopbackend.dto.ResponseDTO;
 import lk.ijse.gdse66.shoeshopbackend.dto.UserDTO;
 import lk.ijse.gdse66.shoeshopbackend.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -54,6 +56,19 @@ public class CustomerController {
         }
     }
 
+    @GetMapping("/{customerId}")
+    public ResponseEntity<?> getCustomerById(@PathVariable String customerId) {
+        try {
+            CustomerDTO customer = customerService.findCustomerById(customerId);
+            if (customer != null) {
+                return ResponseEntity.ok().body(customer);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
     @GetMapping
     public List<CustomerDTO> getAllCustomers() {
         List<CustomerDTO> customerDTOS = customerService.findAllCustomers();
