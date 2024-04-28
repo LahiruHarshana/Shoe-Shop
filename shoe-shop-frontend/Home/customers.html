@@ -291,13 +291,13 @@
                 buttonGroup.className = 'button-group d-flex flex-wrap align-items-center';
 
                 const viewLink = document.createElement('a');
-                viewLink.href = `customerView.html?customerId=${customer.customerId}`; // Pass customer ID as URL parameter
+                viewLink.href = `customerView.html?customerId=${customer.customerId}`;
                 viewLink.title = 'View';
                 viewLink.innerHTML = '<img src="../assets/eye.png" alt="View">';
                 buttonGroup.appendChild(viewLink);
 
                 const editLink = document.createElement('a');
-                editLink.href = '#';
+                editLink.href = 'customerEdit.html';
                 editLink.title = 'Edit';
                 editLink.innerHTML = '<img src="../assets/edit.png" alt="Edit">';
                 buttonGroup.appendChild(editLink);
