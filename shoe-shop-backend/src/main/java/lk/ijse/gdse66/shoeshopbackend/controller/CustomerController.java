@@ -38,10 +38,19 @@ public class CustomerController {
         }
     }
 
+    @PutMapping
+    public ResponseDTO updateCustomer(@RequestBody CustomerDTO customerDTO){
+        try {
+            return new ResponseDTO("Customer updated successfully", customerService.updateCustomer(customerDTO));
+        } catch (Exception e) {
+            return new ResponseDTO(e.getMessage(), 500);
+        }
+    }
+
     @PutMapping("/dis/{id}")
     public ResponseDTO disableCustomer(@PathVariable String id) {
         try {
-            return new ResponseDTO("Customer disabled successfully", customerService.disable(id));
+            return new ResponseDTO("Customer disabled successfully", customerService.disable(Long.valueOf(id)));
         } catch (Exception e) {
             return new ResponseDTO(e.getMessage(), 500);
         }
@@ -50,7 +59,7 @@ public class CustomerController {
     @PutMapping("/enb/{id}")
     public ResponseDTO enablesCustomer(@PathVariable String id) {
         try {
-            return new ResponseDTO("Customer enabled successfully", customerService.enable(id));
+            return new ResponseDTO("Customer enabled successfully", customerService.enable(Long.valueOf(id)));
         } catch (Exception e) {
             return new ResponseDTO(e.getMessage(), 500);
         }
@@ -59,7 +68,7 @@ public class CustomerController {
     @GetMapping("/{customerId}")
     public ResponseEntity<?> getCustomerById(@PathVariable String customerId) {
         try {
-            CustomerDTO customer = customerService.findCustomerById(customerId);
+            CustomerDTO customer = customerService.findCustomerById(Long.valueOf(customerId));
             if (customer != null) {
                 return ResponseEntity.ok().body(customer);
             } else {

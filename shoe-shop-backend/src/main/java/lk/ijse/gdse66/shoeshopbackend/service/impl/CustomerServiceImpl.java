@@ -40,8 +40,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Integer disable(String id) {
-        Customer userEntity = customerRepository.findById(id).orElse(null);
+    public Integer disable(Long id) {
+        Customer userEntity = customerRepository.findById(String.valueOf(id)).orElse(null);
         if (userEntity != null) {
             userEntity.setActive(false);
             customerRepository.save(userEntity);
@@ -52,7 +52,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Integer updateCustomer(CustomerDTO customerDTO) {
-        if (customerRepository.existsById(customerDTO.getCustomerId())) {
+        if (customerRepository.existsById(String.valueOf(customerDTO.getCustomerId()))) {
             Customer entity = modelMapper.map(customerDTO, Customer.class);
             customerRepository.save(entity);
             return 200;
@@ -67,8 +67,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Integer enable(String id) {
-        Customer userEntity = customerRepository.findById(id).orElse(null);
+    public Integer enable(Long id) {
+        Customer userEntity = customerRepository.findById(String.valueOf(id)).orElse(null);
         if (userEntity != null) {
             userEntity.setActive(true);
             customerRepository.save(userEntity);
@@ -86,8 +86,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDTO findCustomerById(String customerId) {
-        Customer customerEntity = customerRepository.findById(customerId).orElse(null);
+    public CustomerDTO findCustomerById(Long customerId) {
+        Customer customerEntity = customerRepository.findById(String.valueOf(customerId)).orElse(null);
         if (customerEntity != null) {
             return modelMapper.map(customerEntity, CustomerDTO.class);
         }

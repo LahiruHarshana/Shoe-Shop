@@ -17,10 +17,10 @@ import java.util.List;
 
 public interface CustomerService {
     public Integer saveCustomer(CustomerDTO customerDTO);
-    public Integer disable(String id);
+    public Integer disable(Long id);
     public Integer updateCustomer(CustomerDTO customerDTO);
     public List<CustomerDTO> findAllCustomers();
-    public Integer enable(String id);
+    public Integer enable(Long id);
     public List<CustomerDTO> paginationCustomers(PaginationDTO paginationDTO);
-    CustomerDTO findCustomerById(String customerId);
+    CustomerDTO findCustomerById(Long customerId);
 }

@@ -25,8 +25,9 @@ import java.util.List;
 @Table(name = "customer")
 public class Customer {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
-    private String customerId;
+    private Long customerId;
 
     @Column(name = "customer_name")
     private String customerName;

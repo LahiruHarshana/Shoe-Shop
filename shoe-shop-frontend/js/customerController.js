@@ -1,3 +1,4 @@
+let cusId;
 $(document).ready(function() {
     const isLoadedFromHomePage = localStorage.getItem('loadedFromHomePage');
 
@@ -31,52 +32,25 @@ $(document).ready(function() {
 
 function saveCustomer() {
 
-
-    console.log('Save Customer ha i haijai ');
-    // const now = new Date();
-    // const customerId = document.getElementById('customerId').value;
-    // const customerName = document.getElementById('customerName').value;
-    // const userId = document.getElementById('userId').value;
-    // const gender = document.getElementById('gender').value;
-    // const joinDate = formatDate(document.getElementById('joinDate').value);
-    // const dob = formatDate(document.getElementById('dob').value);
-    // const level = document.getElementById('level').value;
-    // const totalPoints = document.getElementById('totalPoints').value;
-    // const addressLine1 = document.getElementById('addressLine1').value;
-    // const addressLine2 = document.getElementById('addressLine2').value;
-    // const addressLine3 = document.getElementById('addressLine3').value;
-    // const addressLine4 = document.getElementById('addressLine4').value;
-    // const addressLine5 = document.getElementById('addressLine5').value;
-    // const contactNo = document.getElementById('conNo').value;
-    // const isActive = document.getElementById('isActive').checked;
-
     const customerData = {
-        "customerId": "2",
-        "customerName": "John Doe",
-        "userId": "1",
-        "gender": "MALE",
-        "joinDate": "2024-04-26",
-        "level": "GOLD",
-        "totalPoints": 100,
-        "dob": "1990-01-01",
-        "addressLine1": "123 Main St",
-        "addressLine2": "Apt 101",
-        "addressLine3": "City",
-        "addressLine4": "State",
-        "addressLine5": "12345",
-        "contactNo": "1234567890",
-        "email": "john.doe@example.com",
-        "recentPurchaseDateTime": "2024-04-26T14:00:00",
-        "createBy": "admin",
-        "modifyBy": "admin",
-        "isActive": true
-    };
+        customerId: cusId,
+        customerName: document.getElementById("customer-name").value,
+        email: document.getElementById("customer-email").value,
+        contactNo: document.getElementById("customer-contact").value,
+        dob: document.getElementById("customer-dob").value,
+        addressLine1: document.getElementById("customer-address-lane").value,
+        addressLine2: document.getElementById("customer-address-state").value,
+        addressLine3: document.getElementById("customer-address-country").value,
+        addressLine4: document.getElementById("customer-address-city").value,
+        addressLine5: document.getElementById("customer-address-code").value,
+        gender: document.getElementById("customer-gender").value
+    }
 
 
     const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsYWhpcnUiLCJpYXQiOjE3MTQ2Njc4MTQsImV4cCI6MTcxNDc1NDIxNH0.ENeIH6C9HeVY4WnabZQ8XzPZBwS4-isOK_yfxi6BkQw";
 
     fetch('http://localhost:8081/app/api/v1/customer', {
-        method: 'POST',
+        method: document.getElementById("btn-save-customer").textContent==='Update Customer'?'PUT':'POST',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
@@ -93,6 +67,8 @@ function saveCustomer() {
 }
 
 function openEditForm(customer) {
+    cusId = customer.customerId;
+    document.getElementById("btn-save-customer").textContent = "Update Customer";
     document.getElementById('staticBackdropLabel').textContent = 'Edit Customer';
     document.getElementById("customer-name").value = customer.customerName;
     document.getElementById("customer-gender").value = customer.gender;
@@ -128,9 +104,6 @@ function get() {
             }
         })
         .catch(error => console.error('Error fetching data:', error));
-
-    // JavaScript function to open the popup window
-
     function renderCustomers(customers) {
         const customerTableBody = document.getElementById('customerTbl');
         customerTableBody.innerHTML = '';
@@ -209,6 +182,7 @@ function closeViewPopup() {
 }
 
 function loadCustomerData(customer) {
+    cusId = '';
     document.getElementById('customerIdView').textContent = customer.customerId;
     document.getElementById('customerNameView').textContent = customer.customerName;
     document.getElementById('userIdView').textContent = customer.userId;
@@ -259,6 +233,7 @@ fetch(`http://localhost:8081/app/api/v1/customer/${customerId}`, {
 
 
 function openAddCustomerPopup() {
+    document.getElementById("btn-save-customer").textContent = "Save Customer";
     document.getElementById("addCustomerPopup").style.display = "block";
     document.getElementById('staticBackdropLabel').textContent = 'Add Customer';
     document.getElementById("customer-name").value = '';
