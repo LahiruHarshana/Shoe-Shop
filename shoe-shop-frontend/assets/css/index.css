@@ -1,0 +1,8 @@
+:root {
+    --main-color: #0089ED;
+    --info-color: #0a4772;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
