@@ -2,9 +2,586 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Settings</title>
+    <title>Hello Shoe | Settings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/images/Logo.png">
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="assets/css/admin/adminSlideBar.css">
+    <style>
+
+        ::-webkit-scrollbar {
+            width: 0.4vw;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--main-color);
+            border-radius: 10px;
+        }
+
+        #bg-admin {
+            z-index: 100;
+            background-color: rgba(29, 30, 30, 0.32);
+        }
+
+        .bg-image-change {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            z-index: -1;
+        }
+
+        @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        th {
+            background-color: #f8f9fa;
+            color: #333;
+            font-weight: 500;
+        }
+        td {
+            color: #555;
+        }
+
+        .table thead th {
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+            font-weight: bold;
+            text-align: left;
+            padding: 10px;
+        }
+
+        .table tbody td {
+            border-bottom: 1px solid #dee2e6;
+            padding: 10px;
+        }
+
+        .button-group a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #007bff;
+            transition: color 0.3s;
+        }
+
+        .button-group a:hover {
+            color: #0056b3;
+        }
+
+
+        :root {
+            --blue: #2a2185;
+            --white: #fff;
+            --gray: #f5f5f5;
+            --black1: #222;
+            --black2: #999;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        #mainContent{
+            position: absolute;
+            left: 23%;
+            width: 70%;
+        }
+
+        .navigation {
+            position: fixed;
+            width: 300px;
+            height: 100%;
+            background: var(--blue);
+            border-left: 10px solid var(--blue);
+            transition: 0.5s;
+            overflow: hidden;
+        }
+        .navigation.active {
+            width: 80px;
+        }
+
+        .navigation ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .navigation ul li {
+            position: relative;
+            width: 100%;
+            list-style: none;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+        }
+
+        .navigation ul li:hover,
+        .navigation ul li.hovered {
+            background-color: var(--white);
+        }
+
+        .navigation ul li:nth-child(1) {
+            margin-bottom: 40px;
+            pointer-events: none;
+        }
+
+        .navigation ul li a {
+            position: relative;
+            display: block;
+            width: 100%;
+            display: flex;
+            text-decoration: none;
+            color: var(--white);
+        }
+        .navigation ul li:hover a,
+        .navigation ul li.hovered a {
+            color: var(--blue);
+        }
+
+        .navigation ul li a .icon {
+            position: relative;
+            display: block;
+            min-width: 60px;
+            height: 60px;
+            line-height: 75px;
+            text-align: center;
+        }
+        .navigation ul li a .icon ion-icon {
+            font-size: 1.75rem;
+        }
+
+        .navigation ul li a .title {
+            position: relative;
+            display: block;
+            padding: 0 10px;
+            height: 60px;
+            line-height: 60px;
+            text-align: start;
+            white-space: nowrap;
+        }
+
+        /* --------- curve outside ---------- */
+        .navigation ul li:hover a::before,
+        .navigation ul li.hovered a::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: -50px;
+            width: 50px;
+            height: 50px;
+            background-color: transparent;
+            border-radius: 50%;
+            box-shadow: 35px 35px 0 10px var(--white);
+            pointer-events: none;
+        }
+        .navigation ul li:hover a::after,
+        .navigation ul li.hovered a::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: -50px;
+            width: 50px;
+            height: 50px;
+            background-color: transparent;
+            border-radius: 50%;
+            box-shadow: 35px -35px 0 10px var(--white);
+            pointer-events: none;
+        }
+
+        /* ===================== Main ===================== */
+        .main {
+            position: absolute;
+            width: calc(100% - 300px);
+            left: 300px;
+            min-height: 100vh;
+            background: var(--white);
+            transition: 0.5s;
+        }
+        .main.active {
+            width: calc(100% - 80px);
+            left: 80px;
+        }
+
+        .topbar {
+            width: 100%;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+        }
+
+
+        .search label {
+            position: relative;
+            width: 100%;
+        }
+
+        .search label input {
+            width: 100%;
+            height: 40px;
+            border-radius: 40px;
+            padding: 5px 20px;
+            padding-left: 35px;
+            font-size: 18px;
+            outline: none;
+            border: 1px solid var(--black2);
+        }
+
+        .search label ion-icon {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            font-size: 1.2rem;
+        }
+
+        .user {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .user img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @media (max-width: 991px) {
+            .navigation {
+                left: -300px;
+            }
+            .navigation.active {
+                width: 300px;
+                left: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .navigation {
+                width: 100%;
+                left: -100%;
+                z-index: 1000;
+            }
+            .navigation.active {
+                width: 100%;
+                left: 0;
+            }
+            .main.active .toggle {
+                color: #fff;
+                position: fixed;
+                right: 0;
+                left: initial;
+            }
+        }
+
+    </style>
+
 </head>
 <body>
 
+<div id="bg-admin">
+    <div class="bg-image-change"></div>
+
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="logo-apple"></ion-icon>
+                        </span>
+                        <span class="title">Brand Name</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="dashboard.html">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="customer.html">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Customers</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="supplier.html">
+                        <span class="icon">
+                            <ion-icon name="chatbubble-outline"></ion-icon>
+                        </span>
+                        <span class="title">Suppliers</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="employee.html">
+                        <span class="icon">
+                            <ion-icon name="help-outline"></ion-icon>
+                        </span>
+                        <span class="title">Employees</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="settings-outline"></ion-icon>
+                        </span>
+                        <span class="title">Settings</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                        </span>
+                        <span class="title">Password</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="mainContent">
+            <div id="" class="w-100">
+
+                <section class="container-fluid">
+                    <section class="d-flex justify-content-sm-between" style="height: 50px">
+                        <input type="text" class="form-control mt-3 w-50" placeholder="Search Employee">
+                        <button class="btn btn-sm btn-primary mt-3" id="btn-employee-modal">Add Employee</button>
+                    </section>
+                    <section class="row row-cols-md-3 mb-5" id="emp-cashier-row">
+
+                        <!--                    <div class="col position-relative">-->
+                        <!--                        <div class="card mt-3 p-2">-->
+                        <!--                            <div class="employee-header"></div>-->
+                        <!--                            <img src="https://github.com/mdo.png" width="100" class="rounded-circle m-auto z-3">-->
+                        <!--                            <small class="text-center">$EMP-07878</small>-->
+                        <!--                            <h6 class="text-center">Savinda Jayasekara</h6>-->
+                        <!--                            <small class="text-center">User</small>-->
+                        <!--                            <div class="d-flex gap-5 justify-content-sm-between px-4">-->
+                        <!--                                <small>Branch</small>-->
+                        <!--                                <small>Matara</small>-->
+                        <!--                            </div>-->
+                        <!--                            <div class="d-flex gap-5 justify-content-sm-between px-4">-->
+                        <!--                                <small>Date of Birth</small>-->
+                        <!--                                <small>25/08/2002</small>-->
+                        <!--                            </div>-->
+                        <!--                            <div class="d-flex gap-5 justify-content-sm-between px-4">-->
+                        <!--                                <small>Gender</small>-->
+                        <!--                                <small>Male</small>-->
+                        <!--                            </div>-->
+                        <!--                            <div class="d-flex gap-5 justify-content-sm-between px-4">-->
+                        <!--                                <small>Email</small>-->
+                        <!--                                <small>thantrige32@gmail.com</small>-->
+                        <!--                            </div>-->
+                        <!--                            <div class="d-flex gap-5 justify-content-sm-between px-4">-->
+                        <!--                                <small>Contact No</small>-->
+                        <!--                                <small>07145826398</small>-->
+                        <!--                            </div>-->
+                        <!--                            <small class="text-center mt-2 text-dark">27/2 , 'savinda' Sirisumana MW ,<br>Dickwall</small>-->
+                        <!--                            <small class="text-danger">Emergency</small>-->
+                        <!--                            <div class="d-flex gap-5 mt-2 justify-content-sm-between px-4">-->
+                        <!--                                <small>Ajith Prasanna</small>-->
+                        <!--                                <small>0715682429</small>-->
+                        <!--                            </div>-->
+                        <!--                            <hr>-->
+                        <!--                            <div class="d-flex mt-2 justify-content-end px-4">-->
+                        <!--                                <button class="btn btn-sm btn-primary">Edit</button>-->
+                        <!--                                <button class="btn btn-sm btn-danger ms-2">Delete</button>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+                        <!--                    </div>-->
+
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <div class="modal fade" id="employee-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                        <h1 class="modal-title fs-5 " id="staticBackdropLabel">Add New Manager</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="emp-inputs">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="mb-1">
+                                        <label for="emp-branch" class="form-label">Branch</label>
+                                        <select class="form-select" aria-label="Default select example" id="emp-branch">
+                                            <option selected></option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="emp-name" class="form-label">Employee Name</label>
+                                        <input type="text" class="form-control" id="emp-name">
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="emp-gender" class="form-label">Gender</label>
+                                        <select class="form-select" aria-label="Default select example" id="emp-gender">
+                                            <option selected></option>
+                                            <option value="MALE">MALE</option>
+                                            <option value="FEMALE">FEMALE</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="emp-civil-status" class="form-label" id="lbl-status">Civil Status</label>
+                                        <input type="text" class="form-control" id="emp-civil-status">
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="emp-contact" class="form-label">Contact</label>
+                                        <input type="text" class="form-control" id="emp-contact">
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="emp-email" class="form-label">Email</label>
+                                        <input type="text" class="form-control" id="emp-email">
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="emp-designation" class="form-label">Designation</label>
+                                        <input type="text" class="form-control" id="emp-designation">
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="emp-dob" class="form-label">DOB</label>
+                                        <input type="date" class="form-control" id="emp-dob">
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="emp-emg-guardian" class="form-label">Emergency Guardian</label>
+                                        <input type="text" class="form-control" id="emp-emg-guardian">
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="emp-emg-contact" class="form-label">Emergency Contact</label>
+                                        <input type="text" class="form-control" id="emp-emg-contact">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="mb-1">
+                                        <label for="emp-address-lane" class="form-label">Address main Lane</label>
+                                        <input type="text" class="form-control" id="emp-address-lane">
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="emp-address-state" class="form-label">Address main State</label>
+                                        <input type="text" class="form-control" id="emp-address-state">
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="emp-address-country" class="form-label">Address main Country</label>
+                                        <input type="text" class="form-control" id="emp-address-country">
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="emp-address-city" class="form-label">Address main city</label>
+                                        <input type="text" class="form-control" id="emp-address-city">
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="emp-address-code" class="form-label">Address postal Code</label>
+                                        <input type="text" class="form-control" id="emp-address-code">
+                                    </div>
+
+                                    <div class="mb-1">
+                                        <div class="d-flex justify-content-center m-2">
+                                            <img src="../../assets/images/Logo-dark.png" id="emp-img-preview" class="rounded-circle border " style="width: 150px;height: 150px">
+                                        </div>
+                                        <input type="file" class="form-control" id="emp-img">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="btn-add-emp">Add User</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Page Content  -->
+
+</div>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/sweetAlerts.js"></script>
+<script src="/util/base.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+
+<script src="js/employeeController.js"></script>
+
+
+<!--<script>-->
+<!--    $(document).ready(function () {-->
+<!--        $('#example').DataTable({-->
+<!--            "language": {-->
+<!--                "search": "Search Records:",-->
+<!--                "lengthMenu": "Display count _MENU_",-->
+<!--                "info": "Showing _START_ to _END_ of _TOTAL_ records",-->
+<!--                "infoEmpty": "Showing 0 to 0 of 0 records",-->
+<!--                "infoFiltered": "(filtered from _MAX_ total records)",-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+
+<!--</script>-->
 </body>
 </html>
