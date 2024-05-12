@@ -1,14 +1,16 @@
 package lk.ijse.gdse66.shoeshopbackend.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lk.ijse.gdse66.shoeshopbackend.embedded.Address;
+import lk.ijse.gdse66.shoeshopbackend.enums.Gender;
+import lk.ijse.gdse66.shoeshopbackend.enums.Level;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,93 +20,30 @@ import java.util.List;
  * @created : 2024-04-20, Saturday
  **/
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "customer")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_id")
-    private Long customerId;
-
-    @Column(name = "customer_name")
+    private String customerId;
     private String customerName;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
     @Enumerated(EnumType.STRING)
-    @Column(name = "gender")
     private Gender gender;
-
-    @Column(name = "join_date")
-    @Temporal(TemporalType.DATE)
-    private Date joinDate;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "level")
-    private LoyaltyLevel level;
-
-    @Column(name = "total_points")
-    private Integer totalPoints;
-
-    @Column(name = "dob")
-    @Temporal(TemporalType.DATE)
-    private Date dob;
-
-    @Column(name = "address_line_01")
-    private String addressLine1;
-
-    @Column(name = "address_line_02")
-    private String addressLine2;
-
-    @Column(name = "address_line_03")
-    private String addressLine3;
-
-    @Column(name = "address_line_04")
-    private String addressLine4;
-
-    @Column(name = "address_line_05")
-    private String addressLine5;
-
-    @Column(name = "contact_no")
-    private String contactNo;
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "recent_purchase_date_time")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date recentPurchaseDateTime;
-
     @CreationTimestamp
-    @Column(name = "create_date", updatable = false, nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime createDate;
-
-    @Column(name = "create_by")
-    private String createBy;
-
-    @UpdateTimestamp
-    @Column(name = "modify_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime modifyDate;
-
-    @Column(name = "modify_by")
-    private String modifyBy;
-
-    @Column(name = "is_active", columnDefinition = "TINYINT(1)")
-    private boolean isActive;
-
-    @OneToMany(mappedBy = "customer",targetEntity = Sale.class)
-    List<Sale> sales;
-    enum Gender {
-        MALE, FEMALE, OTHER
-    }
-    enum LoyaltyLevel {
-        GOLD, SILVER, BRONZE, NEW
-    }
+    private Timestamp registeredDate;
+    private Integer totalPoints;
+    @Column(unique = true)
+    private String contact;
+    private String email;
+    private java.sql.Date recentPurchaseDate;
+    private Address address;
+    @Enumerated(EnumType.STRING)
+    private Level level;
+    private Date dob;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Sale> sales;
 }

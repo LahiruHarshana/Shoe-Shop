@@ -1,6 +1,5 @@
 package lk.ijse.gdse66.shoeshopbackend.repository;
 
-import lk.ijse.gdse66.shoeshopbackend.entity.SaleDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

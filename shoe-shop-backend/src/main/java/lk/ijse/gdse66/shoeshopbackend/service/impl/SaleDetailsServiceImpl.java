@@ -1,11 +1,7 @@
 package lk.ijse.gdse66.shoeshopbackend.service.impl;
 
-import lk.ijse.gdse66.shoeshopbackend.dto.CustomerDTO;
 import lk.ijse.gdse66.shoeshopbackend.dto.PaginationDTO;
 import lk.ijse.gdse66.shoeshopbackend.dto.SaleDetailsDTO;
-import lk.ijse.gdse66.shoeshopbackend.entity.Customer;
-import lk.ijse.gdse66.shoeshopbackend.entity.SaleDetails;
-import lk.ijse.gdse66.shoeshopbackend.repository.CustomerRepository;
 import lk.ijse.gdse66.shoeshopbackend.repository.SaleDetailsRepository;
 import lk.ijse.gdse66.shoeshopbackend.service.SaleDetailsService;
 import lk.ijse.gdse66.shoeshopbackend.util.CommonUtils;

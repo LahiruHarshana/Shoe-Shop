@@ -24,7 +24,6 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "employee")
 public class Employee {
     @Id
     private String empId;

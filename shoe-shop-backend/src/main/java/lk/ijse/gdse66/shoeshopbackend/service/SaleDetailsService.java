@@ -2,8 +2,6 @@ package lk.ijse.gdse66.shoeshopbackend.service;
 
 import lk.ijse.gdse66.shoeshopbackend.dto.PaginationDTO;
 import lk.ijse.gdse66.shoeshopbackend.dto.SaleDetailsDTO;
-import lk.ijse.gdse66.shoeshopbackend.entity.SaleDetails;
-import lk.ijse.gdse66.shoeshopbackend.util.CommonUtils;
 
 import java.util.List;
 

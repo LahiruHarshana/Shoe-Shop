@@ -1,10 +1,8 @@
 package lk.ijse.gdse66.shoeshopbackend.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lk.ijse.gdse66.shoeshopbackend.enums.Role;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -22,59 +20,29 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Data
-@Table(name = "user")
-@Builder
+@Setter
+@Getter
 public class User {
     @Id
-    @Column(name = "user_id")
-    private String userId;
-
-//    @OneToOne
-//    @JoinColumn(name = "employee_id")
-//    private Employee employee;
-
-    @Column(length = 50)
     private String username;
-
-    @Column(length = 50)
-    private String email;
-
-    @Column
     private String password;
-
     @Enumerated(EnumType.STRING)
-    @Column(length = 10)
-    private UserRole role;
+    private Role role;
 
-    @CreationTimestamp
-    @Column(name = "create_date", updatable = false, nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime createDate;
+    @OneToOne
+    @JoinColumn(name = "empId", referencedColumnName = "empId")
+    private Employee employee;
 
-    @Column(name = "create_by")
-    private String createBy;
+    @OneToMany(mappedBy = "user")
+    private List<Customer> customers;
 
-    @UpdateTimestamp
-    @Column(name = "modify_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime modifyDate;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Sale> sales;
 
-    @Column(name = "modify_by")
-    private String modifyBy;
-
-    @Column(name = "is_active", columnDefinition = "TINYINT(1)")
-    private boolean isActive;
-
-    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY,cascade = CascadeType.ALL,targetEntity = Customer.class)
-    List<Customer> customers;
-
-    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY,cascade = CascadeType.ALL,targetEntity = Sale.class)
-    List<Sale> sales;
-
-    public enum UserRole {
-        ADMIN,
-        USER
+    public User(String email, String password, Role role) {
+        this.username = email;
+        this.password = password;
+        this.role = role;
     }
 
 }
