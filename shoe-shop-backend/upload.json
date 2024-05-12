@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "shoeshop-423104",
+  "private_key_id": "bebba08250c55d320d14ff04056ca549959d5edd",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDEQ1wocgIe8G5t\nG+PnzLUS9FpnKaQmjdUrjlU+3qp3Qt7FVsroMujU9b9A6SavaDwF7GfxIe3HiISS\nEyL5CrNJZjwYOAg9jzVjjdYUQTO3qSnG6w9v3JMrz076kfK51RqcZPkQMJTKVSCh\n33tYH3Cn4+j+hylh2hA7LGE98ZgjokU03Od4E3+32YFo7Qc63aFboBE55t3hpFaV\nrTIfK+31v/2jZXOjh0kdkq9mkNGgQvEW63Yg8ww2Y2wISLSR0veK7OJHNWbKQawL\niz8Ar/7qOHfbvEAKbIb+DpwESJIMKVZBDE3VUaUKJs0iEBwUsKYL39OHx1+b/m4g\ncqSixd8BAgMBAAECggEACQM03LCbk1MkJwOEXDUkzYmGCz24yYJy2wyusnPkLRTX\niQVazP3lfj4IudDbE2v8caMxBLwzoJmOyOxzCy+oGwNEWDJegoEsiPVO8uApoVH1\n1qodq9vbsEPVUyFXnZwBHFRwsYMhmgb9uCE8l0feUv9eyC1pw5IRc74uevs4qs4o\nodToYpvtWUtLEx3e3Yh9OSjXmaayBfr/gQl2qVaKrPD4nIpj/k/jSL/jMOX8VZve\nw6RJqhOKsZEqVDn1ukrMj4QWNAfiUZ6OuX4EjtXki2QfYMYsNljUbPB4l4qO8sYC\naY4Fr6qas68Mz4osxLIB3hE4tKrF7AVmTnRX9+nQ/wKBgQD3wJ24tyT09BP/7TGq\nnNE62+VWDypWz+HiaVmAmd8JDKnPW6D1g1+L++tb8rWtmYWMqd8PYEsJJ1nlG+RP\nf4DsOXU6owzjlb3AiYVcEmZd9tW8wDIar+qlrGS9JA7akcE1RYRGMBySkN5ZOFeu\n7O6R7R/YIqpnOOobQVlG2nVgwwKBgQDKy/HBh7Mg4kE+E+p9HrhV2zXL7NPHG4pF\nNwFVqyL03Ib4mp6i5gYsQX7XMTxkPdgHMeHNAtGK8G0abvu6Pd73FrfcB9iFzJ7F\nWjwnKiJhxD77K2ZVy7lRlJ4hDfoh3Wy/v7yp+U+UrqOkToW+nXaUOFi70bL5FcV7\n7WCHZkEE6wKBgQCFRLpSo0mg7i5X64pc4S/3PlP14ACBZB94v/yiHaMI5iPt47cI\neduKnD91XXB26m8ZREM1rTGPwfgsMr20Obzq1NmHai/DuEey6wauiUNBZkaA2s3Y\n5yoMZlhmGaBX2DGa60ME0lp8SKsiSRl5gf+uxWPsynDpR4c+k/9nCpo7KwKBgE/d\ntd4z5RXkRTF/gm+4M3yMkkk3gcf+Tpwnp3znoyKv3u/1ZNheoru3J470MwZ/XJ6o\nxHaKz59aRH2Oi9CzISZKaipbZKh9B2JNwTbjXxsFwJAGbY0IaHl6gDQgXwwLOhLi\nHhkKuI6joIrK6d1CAjspXbjKQyPZsSa3O7bXTG/1AoGBALjytd3nZPtjJ2coYPPn\nj1ZYajB+8Joe2oo0moMWwmACGVUBsqc+7VIefs9yKUG5i+rY+DO5+k/im1wKUeAC\nxaa/D2326eUzFbhpsEcv0XoyvbC1gO2GCiaSk/zHVwcYJEr6qD+rbtoE1E9/Tokd\nTG6akUnMxKkDkyg4U1hZd2i+\n-----END PRIVATE KEY-----\n",
+  "client_email": "lahiruharshana@shoeshop-423104.iam.gserviceaccount.com",
+  "client_id": "112035400237958473853",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/lahiruharshana%40shoeshop-423104.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

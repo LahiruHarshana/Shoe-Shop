@@ -1,52 +1,57 @@
 package lk.ijse.gdse66.shoeshopbackend.controller;
 
-import lk.ijse.gdse66.shoeshopbackend.dto.LogInDTO;
-import lk.ijse.gdse66.shoeshopbackend.entity.User;
-import lk.ijse.gdse66.shoeshopbackend.repository.UserRepository;
-import lk.ijse.gdse66.shoeshopbackend.security.jwt.JwtUtil;
-import lk.ijse.gdse66.shoeshopbackend.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lk.ijse.gdse66.shoeshopbackend.auth.AuthenticationRequest;
+import lk.ijse.gdse66.shoeshopbackend.auth.AuthenticationResponse;
+import lk.ijse.gdse66.shoeshopbackend.dto.UserDTO;
+import lk.ijse.gdse66.shoeshopbackend.enums.Role;
+import lk.ijse.gdse66.shoeshopbackend.service.UserDetailService;
+import lk.ijse.gdse66.shoeshopbackend.util.JwtUtil;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*")
+@RequestMapping("/api/auth")
 public class AuthController {
-    @Autowired
-    private UserRepository userRepository;
+    private final AuthenticationProvider authenticationManager;
+    private final JwtUtil jwtTokenUtil;
+    private final UserDetailsService userDetailsService;
+    private final UserDetailService userDetailService;
 
-    @Autowired
-    private UserService userService;
+    public AuthController(AuthenticationProvider authenticationManager, JwtUtil jwtTokenUtil, UserDetailsService userDetailsService, UserDetailService userDetailService) {
+        this.authenticationManager = authenticationManager;
+        this.jwtTokenUtil = jwtTokenUtil;
+        this.userDetailsService = userDetailsService;
+        this.userDetailService = userDetailService;
+    }
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
-    @Autowired
-    private JwtUtil jwtUtils;
-    @PostMapping("/auth/signin")
-    public ResponseEntity<?> login(@RequestBody LogInDTO loginDTO) {
-        System.out.println("hi halo");
-        System.out.println("AuthController.login");
-        System.out.println(loginDTO);
-        Authentication authentication= authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginDTO.getUsername(), loginDTO.getPassword())
-        );
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        String jwt = jwtUtils.generateJwtToken(authentication);
-
-        return ResponseEntity.ok(jwt);
+    @PostMapping("/login")
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
+        UserDTO userDto = null;
+        String profilePic = null;
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            authenticationRequest.getUsername(),
+                            authenticationRequest.getPassword())
+            );
+            final UserDetails userDetails = userDetailsService
+                    .loadUserByUsername(authenticationRequest.getUsername());
+            final String jwt = jwtTokenUtil.generateToken(userDetails.getUsername());
+            userDto = userDetailService.loginUser(userDetails.getUsername());
+            if (userDto.getRole().equals(Role.SUPER_ADMIN)) {
+                profilePic = "11znDDHfMXG2uVpAw9H3JU2sMchS5r8_u";
+            } else {
+                profilePic = userDto.getProfilePic();
+            }
+            return ResponseEntity.ok(new AuthenticationResponse(jwt, userDto.getUserName(), profilePic, userDto.getRole()));
+        } catch (BadCredentialsException e) {
+            throw new Exception("Incorrect username or password", e);
+        }
     }
 }

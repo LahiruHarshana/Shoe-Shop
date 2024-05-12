@@ -1,5 +1,6 @@
 package lk.ijse.gdse66.shoeshopbackend.dto;
 
+import lk.ijse.gdse66.shoeshopbackend.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,19 +14,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class UserDTO {
-    private String userId;
-//    private String employeeCode;
-    private String username;
-    private String email;
-    private String password;
-    private UserRole role;
-    private String createBy;
-    private String modifyBy;
-    private boolean isActive;
-
-    public enum UserRole {
-        ADMIN, USER
-    }
+    private String userName;
+    private String profilePic;
+    private Role role;
 }
