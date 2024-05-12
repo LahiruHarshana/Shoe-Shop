@@ -17,4 +17,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Embeddable
 public class Contact {
+    private String mobile;
+    private String land;
 }
