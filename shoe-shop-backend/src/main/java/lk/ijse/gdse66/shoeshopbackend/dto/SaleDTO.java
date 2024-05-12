@@ -1,10 +1,13 @@
 package lk.ijse.gdse66.shoeshopbackend.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lk.ijse.gdse66.shoeshopbackend.enums.PaymentMethod;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author : L.H.J
@@ -17,21 +20,15 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 public class SaleDTO {
-    private String orderNo;
-    private String itemCode;
+    private String saleId;
+    private Double subTotal;
+    private String customerContact;
     private String customerName;
-    private String itemDesc;
-    private Integer size;
-    private Double unitPrice;
-    private Integer itemQty;
-    private Double totalPrice;
-    private Date purchaseDate;
-    private String paymentMethod;
-    private Double addedPoints;
-    private String userId;
-    private String customerId;
+    private Integer addedPoints;
     private String cashierName;
-    private String createBy;
-    private String modifyBy;
-    private boolean isActive;
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    private PaymentMethod paymentMethod;
+    private Boolean isDemo;
+    private List<InventoryDTO> inventories;
+    private Integer getqty;
 }
