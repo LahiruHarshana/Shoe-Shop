@@ -3,7 +3,6 @@ package lk.ijse.gdse66.shoeshopbackend.controller;
 import lk.ijse.gdse66.shoeshopbackend.dto.CustomerDTO;
 import lk.ijse.gdse66.shoeshopbackend.dto.PaginationDTO;
 import lk.ijse.gdse66.shoeshopbackend.dto.ResponseDTO;
-import lk.ijse.gdse66.shoeshopbackend.dto.UserDTO;
 import lk.ijse.gdse66.shoeshopbackend.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
