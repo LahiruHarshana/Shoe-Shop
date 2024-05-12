@@ -6,6 +6,10 @@ package lk.ijse.gdse66.shoeshopbackend.dto;
  * @mailto : lharshana2002@gmail.com
  * @created : 2024-04-23, Tuesday
  **/
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lk.ijse.gdse66.shoeshopbackend.embedded.Address;
+import lk.ijse.gdse66.shoeshopbackend.embedded.Contact;
+import lk.ijse.gdse66.shoeshopbackend.enums.SupplierCategory;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,20 +20,11 @@ import lombok.NoArgsConstructor;
 public class SupplierDTO {
     private String supplierCode;
     private String supplierName;
-    private SupplierCategory category;
-    private String addressLine1;
-    private String addressLine2;
-    private String addressLine3;
-    private String addressLine4;
-    private String addressLine5;
-    private String addressLine6;
-    private String contactNo1;
-    private String contactNo2;
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    private SupplierCategory supplierCategory;
+    private Contact contact;
     private String email;
-    private String modifyBy;
-    private String createBy;
-    private boolean isActive;
-    public enum SupplierCategory {
-        INTERNATIONAL, LOCAL
-    }
+    private Boolean isActive;
+    private Address address;
+    private String originCountry;
 }
