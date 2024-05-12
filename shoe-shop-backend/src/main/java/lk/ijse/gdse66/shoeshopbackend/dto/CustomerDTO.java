@@ -1,12 +1,16 @@
 package lk.ijse.gdse66.shoeshopbackend.dto;
 
-import lk.ijse.gdse66.shoeshopbackend.entity.Customer;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lk.ijse.gdse66.shoeshopbackend.embedded.Address;
+import lk.ijse.gdse66.shoeshopbackend.enums.Gender;
+import lk.ijse.gdse66.shoeshopbackend.enums.Level;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * @author : L.H.J
@@ -19,31 +23,18 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerDTO{
-    private Long customerId;
+    private String userEmail;
+    private String customerId;
     private String customerName;
-    private String userId;
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private Gender gender;
-    private Date joinDate;
-    private LoyaltyLevel level;
     private Integer totalPoints;
-    private Date dob;
-    private String addressLine1;
-    private String addressLine2;
-    private String addressLine3;
-    private String addressLine4;
-    private String addressLine5;
-    private String contactNo;
+    private String contact;
     private String email;
-    private Date recentPurchaseDateTime;
-    private String createBy;
-    private String modifyBy;
-    private boolean isActive;
-
-    public enum Gender {
-        MALE, FEMALE, OTHER
-    }
-
-    public enum LoyaltyLevel {
-        GOLD, SILVER, BRONZE, NEW
-    }
+    private java.sql.Date recentPurchaseDate;
+    private Address address;
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    private Level level;
+    private Date dob;
+    private Timestamp registeredDate;
 }
