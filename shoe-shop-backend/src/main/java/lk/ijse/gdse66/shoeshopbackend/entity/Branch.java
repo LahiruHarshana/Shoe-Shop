@@ -1,6 +1,7 @@
 package lk.ijse.gdse66.shoeshopbackend.entity;
 
 import jakarta.persistence.*;
+import lk.ijse.gdse66.shoeshopbackend.embedded.Address;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,7 +29,7 @@ public class Branch {
     private String branchName;
     private String branchContact;
     private String branchManager;
-//    private Address address;
+    private Address address;
     private Integer noOfEmployees;
     @CreationTimestamp
     private Timestamp createdDate;
