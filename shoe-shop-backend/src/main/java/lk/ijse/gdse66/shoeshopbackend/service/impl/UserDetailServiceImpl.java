@@ -4,8 +4,8 @@ import lk.ijse.gdse66.shoeshopbackend.dto.UserDTO;
 import lk.ijse.gdse66.shoeshopbackend.entity.Employee;
 import lk.ijse.gdse66.shoeshopbackend.entity.User;
 import lk.ijse.gdse66.shoeshopbackend.enums.Role;
-import lk.ijse.gdse66.shoeshopbackend.repository.EmployeeRepo;
-import lk.ijse.gdse66.shoeshopbackend.repository.UserRepo;
+import lk.ijse.gdse66.shoeshopbackend.repo.EmployeeRepo;
+import lk.ijse.gdse66.shoeshopbackend.repo.UserRepo;
 import lk.ijse.gdse66.shoeshopbackend.service.UserDetailService;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,9 +21,9 @@ import java.util.ArrayList;
  * @mailto : lharshana2002@gmail.com
  * @created : 2024-05-12, Sunday
  **/
-
 @Service
 public class UserDetailServiceImpl implements UserDetailService, UserDetailsService {
+
     private final UserRepo userRepo;
 
     private final ModelMapper mapper;

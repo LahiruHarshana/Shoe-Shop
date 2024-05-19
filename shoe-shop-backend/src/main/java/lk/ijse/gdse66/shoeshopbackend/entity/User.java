@@ -22,6 +22,7 @@ import java.util.List;
 @Entity
 @Setter
 @Getter
+@Builder
 public class User {
     @Id
     private String username;

@@ -1,15 +1,15 @@
 package lk.ijse.gdse66.shoeshopbackend.service.impl;
 
 import lk.ijse.gdse66.shoeshopbackend.dto.CustomerDTO;
-import lk.ijse.gdse66.shoeshopbackend.dto.PaginationDTO;
 import lk.ijse.gdse66.shoeshopbackend.entity.Customer;
-import lk.ijse.gdse66.shoeshopbackend.repository.CustomerRepository;
+import lk.ijse.gdse66.shoeshopbackend.entity.User;
+import lk.ijse.gdse66.shoeshopbackend.enums.Level;
+import lk.ijse.gdse66.shoeshopbackend.repo.CustomerRepo;
+import lk.ijse.gdse66.shoeshopbackend.repo.UserRepo;
 import lk.ijse.gdse66.shoeshopbackend.service.CustomerService;
-import lk.ijse.gdse66.shoeshopbackend.util.CommonUtils;
+import lk.ijse.gdse66.shoeshopbackend.util.IDGenerator;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,81 +17,65 @@ import java.util.List;
  * @author : L.H.J
  * @File: CustomerServiceImpl
  * @mailto : lharshana2002@gmail.com
- * @created : 2024-04-23, Tuesday
+ * @created : 2024-05-12, Sunday
  **/
-
 @Service
-@Transactional
 public class CustomerServiceImpl implements CustomerService {
 
-    private final CustomerRepository customerRepository;
-    private final ModelMapper modelMapper;
+    private final CustomerRepo customerRepo;
 
-    @Autowired
-    CustomerServiceImpl(CustomerRepository customerRepository, ModelMapper modelMapper){
-        this.customerRepository = customerRepository;
-        this.modelMapper = modelMapper;
-    }
-    @Override
-    public Integer saveCustomer(CustomerDTO customerDTO) {
-        customerDTO.setActive(true);
-        customerRepository.save(modelMapper.map(customerDTO, Customer.class));
-        return 200;
+    private final ModelMapper mapper;
+
+    private final UserRepo userRepo;
+
+    public CustomerServiceImpl(CustomerRepo customerRepo, ModelMapper mapper, UserRepo userRepo) {
+        this.customerRepo = customerRepo;
+        this.mapper = mapper;
+        this.userRepo = userRepo;
     }
 
     @Override
-    public Integer disable(Long id) {
-        Customer userEntity = customerRepository.findById(String.valueOf(id)).orElse(null);
-        if (userEntity != null) {
-            userEntity.setActive(false);
-            customerRepository.save(userEntity);
-            return 200;
-        }
-        return 500;
+    public boolean saveCustomer(CustomerDTO customerDTO) {
+        Customer map = mapper.map(customerDTO, Customer.class);
+        User user = userRepo.findById(customerDTO.getUserEmail()).get();
+        map.setUser(user);
+        map.setCustomerId(IDGenerator.generateCustomerId());
+        map.setLevel(Level.NEW);
+        customerRepo.save(map);
+        return true;
     }
 
     @Override
-    public Integer updateCustomer(CustomerDTO customerDTO) {
-        if (customerRepository.existsById(String.valueOf(customerDTO.getCustomerId()))) {
-            Customer entity = modelMapper.map(customerDTO, Customer.class);
-            customerRepository.save(entity);
-            return 200;
-        }
-        return 500;
+    public List<CustomerDTO> getAllCustomers() {
+        return customerRepo.findAll().stream().map(customer -> mapper.map(customer,CustomerDTO.class)).toList();
     }
 
     @Override
-    public List<CustomerDTO> findAllCustomers() {
-        return customerRepository.findAll().stream()
-                .map(customer -> modelMapper.map(customer, CustomerDTO.class)).toList();
+    public boolean updateCustomer(CustomerDTO customerDTO) {
+        Customer customer = customerRepo.findById(customerDTO.getCustomerId()).get();
+        mapper.map(customerDTO,customer);
+        customerRepo.save(customer);
+        return true;
     }
 
     @Override
-    public Integer enable(Long id) {
-        Customer userEntity = customerRepository.findById(String.valueOf(id)).orElse(null);
-        if (userEntity != null) {
-            userEntity.setActive(true);
-            customerRepository.save(userEntity);
-            return 200;
-        }
-        return 500;
+    public CustomerDTO getCustomer(String id) {
+        return mapper.map(customerRepo.findById(id).get(),CustomerDTO.class);
     }
 
     @Override
-    public List<CustomerDTO> paginationCustomers(PaginationDTO paginationDTO) {
-        return customerRepository
-                .findAll(CommonUtils.setPagination(paginationDTO.getOffset(), paginationDTO.getLimit(), paginationDTO.getColumnName()))
-                .stream().map(customer -> modelMapper.map(customer, CustomerDTO.class)).toList();
-
+    public String deleteCustomer(String id) {
+        customerRepo.deleteById(id);
+        return "Customer Deleted !";
     }
 
     @Override
-    public CustomerDTO findCustomerById(Long customerId) {
-        Customer customerEntity = customerRepository.findById(String.valueOf(customerId)).orElse(null);
-        if (customerEntity != null) {
-            return modelMapper.map(customerEntity, CustomerDTO.class);
-        }
-        return null;
+    public List<String> getContactList() {
+        return customerRepo.findAllByContact();
     }
 
+    @Override
+    public CustomerDTO getCustomerByContact(String id) {
+        return mapper.map(customerRepo.findCustomerByContact(id),CustomerDTO.class);
+    }
 }

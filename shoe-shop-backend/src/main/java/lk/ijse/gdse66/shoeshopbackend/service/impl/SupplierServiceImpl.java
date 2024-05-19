@@ -1,16 +1,11 @@
 package lk.ijse.gdse66.shoeshopbackend.service.impl;
 
-import lk.ijse.gdse66.shoeshopbackend.dto.CustomerDTO;
-import lk.ijse.gdse66.shoeshopbackend.dto.PaginationDTO;
 import lk.ijse.gdse66.shoeshopbackend.dto.SupplierDTO;
-import lk.ijse.gdse66.shoeshopbackend.entity.Customer;
 import lk.ijse.gdse66.shoeshopbackend.entity.Supplier;
-import lk.ijse.gdse66.shoeshopbackend.repository.CustomerRepository;
-import lk.ijse.gdse66.shoeshopbackend.repository.SupplierRepository;
+import lk.ijse.gdse66.shoeshopbackend.repo.SupplierRepo;
 import lk.ijse.gdse66.shoeshopbackend.service.SupplierService;
-import lk.ijse.gdse66.shoeshopbackend.util.CommonUtils;
+import lk.ijse.gdse66.shoeshopbackend.util.IDGenerator;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,70 +14,56 @@ import java.util.List;
  * @author : L.H.J
  * @File: SupplierServiceImpl
  * @mailto : lharshana2002@gmail.com
- * @created : 2024-04-23, Tuesday
+ * @created : 2024-05-12, Sunday
  **/
-
 @Service
 public class SupplierServiceImpl implements SupplierService {
 
-    private final SupplierRepository supplierRepository;
-    private final ModelMapper modelMapper;
+    private final SupplierRepo supplierRepo;
 
-    @Autowired
-    SupplierServiceImpl(SupplierRepository supplierRepository , ModelMapper modelMapper){
-        this.supplierRepository = supplierRepository;
-        this.modelMapper = modelMapper;
-    }
-    @Override
-    public Integer saveSupplier(SupplierDTO supplierDTO) {
-        supplierDTO.setActive(true);
-        supplierRepository.save(modelMapper.map(supplierDTO, Supplier.class));
-        return 200;
+    private final ModelMapper mapper;
+
+    public SupplierServiceImpl(SupplierRepo supplierRepo, ModelMapper mapper) {
+        this.supplierRepo = supplierRepo;
+        this.mapper = mapper;
     }
 
     @Override
-    public Integer disable(String id) {
-        Supplier supplier = supplierRepository.findById(id).orElse(null);
-        if (supplier != null) {
-            supplier.setActive(false);
-            supplierRepository.save(supplier);
-            return 200;
-        }
-        return 500;
+    public boolean saveSupplier(SupplierDTO supplierDTO) {
+        supplierDTO.setSupplierCode(IDGenerator.generateSupplierId());
+        supplierDTO.setIsActive(true);
+        Supplier save = supplierRepo.save(mapper.map(supplierDTO, Supplier.class));
+        return save != null;
     }
 
     @Override
-    public Integer updateCustomer(SupplierDTO supplierDTO) {
-        if (supplierRepository.existsById(supplierDTO.getSupplierCode())) {
-            Supplier entity = modelMapper.map(supplierDTO, Supplier.class);
-            supplierRepository.save(entity);
-            return 200;
-        }
-        return 500;
+    public List<SupplierDTO> getAllSuppliers() {
+        return supplierRepo.findAllByIsActive(true).stream().map(supplier -> mapper.map(supplier, SupplierDTO.class)).toList();
     }
 
     @Override
-    public List<SupplierDTO> findAllSupplier() {
-        return supplierRepository.findAll().stream()
-                .map(supplier -> modelMapper.map(supplier, SupplierDTO.class)).toList();
+    public SupplierDTO getSupplier(String id) {
+        return mapper.map(supplierRepo.findById(id).get(), SupplierDTO.class);
     }
 
     @Override
-    public Integer enable(String id) {
-        Supplier supplier = supplierRepository.findById(id).orElse(null);
-        if (supplier != null) {
-            supplier.setActive(true);
-            supplierRepository.save(supplier);
-            return 200;
-        }
-        return 500;
+    public boolean updateSupplier(SupplierDTO supplierDTO) {
+        Supplier supplier = supplierRepo.findById(supplierDTO.getSupplierCode()).get();
+        mapper.map(supplierDTO, supplier);
+        Supplier save = supplierRepo.save(supplier);
+        return save != null;
     }
 
     @Override
-    public List<SupplierDTO> paginationSupplier(PaginationDTO paginationDTO) {
-        return supplierRepository
-                .findAll(CommonUtils.setPagination(paginationDTO.getOffset(), paginationDTO.getLimit(), paginationDTO.getColumnName()))
-                .stream().map(supplier -> modelMapper.map(supplier, SupplierDTO.class)).toList();
+    public boolean deleteSupplier(String id) {
+        Supplier supplier = supplierRepo.findById(id).get();
+        supplier.setIsActive(false);
+        Supplier save = supplierRepo.save(supplier);
+        return save != null;
+    }
 
+    @Override
+    public List<String> getSupplierId() {
+        return supplierRepo.findAllByIsActive(true).stream().map(Supplier::getSupplierCode).toList();
     }
 }

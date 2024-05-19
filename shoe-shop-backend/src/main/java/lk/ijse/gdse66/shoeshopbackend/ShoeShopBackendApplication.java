@@ -12,9 +12,4 @@ public class ShoeShopBackendApplication {
 		SpringApplication.run(ShoeShopBackendApplication.class, args);
 	}
 
-	@Bean
-	ModelMapper modelMapper() {
-		return new ModelMapper();
-	}
-
 }

@@ -1,5 +1,6 @@
 package lk.ijse.gdse66.shoeshopbackend.service;
 
+
 import lk.ijse.gdse66.shoeshopbackend.dto.UserDTO;
 
 /**
@@ -10,5 +11,4 @@ import lk.ijse.gdse66.shoeshopbackend.dto.UserDTO;
  **/
 public interface UserDetailService {
     UserDTO loginUser(String userName);
-
 }
