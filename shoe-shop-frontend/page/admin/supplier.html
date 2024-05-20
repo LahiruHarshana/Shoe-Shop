@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Customer</title>
+    <title>Shoe shop | Supplier</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/css/sidebar.css">
+    <link rel="icon" href="../../assets/images/Logo.png">
     <link href="../../assets/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/index.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../../assets/css/sidebar.css">
     <style>
 
         ::-webkit-scrollbar {
@@ -55,12 +55,8 @@
             }
         }
     </style>
-    <script src="../../assets/js/sidebar.js"></script>
-
-
 </head>
 <body>
-
 <div>
     <div class="navigation">
         <ul>
@@ -154,41 +150,34 @@
                 <img src="../../assets/imgs/customer01.jpg" alt="">
             </div>
         </div>
-        <div id="" class="w-100">
+        <section class="p-3">
             <section class="mt-2 container-fluid d-flex justify-content-end">
-                <button class="btn btn-sm btn-primary" id="btn-add-customer" style="height: 35px" type="button">Add loyalty Customer
+                <button class="btn btn-sm btn-primary" id="btn-add-modal" style="height: 35px" type="button">Add
+                    Supplier
                 </button>
             </section>
-            <section class="p-3">
-                <table id="tbl-customer" class="table table-hover table-striped" style="width:100%">
+            <section class="container-fluid">
+                <table id="tbl-supplier" class="table table-hover table-striped" style="width:100%">
                     <thead class="bg-primary mb-2">
-                    <tr class="bg-primary rounded-2" style="font-size: 13px">
+                    <tr class="bg-primary rounded-2" style="font-size: 12px">
+                        <th class="text-center bg-primary text-white">SupplierCode</th>
                         <th class="text-center bg-primary text-white">Name</th>
-                        <th class="text-center bg-primary text-white">ID</th>
-                        <th class="text-center bg-primary text-white">Gender</th>
-                        <th class="text-center bg-primary text-white">Join date</th>
-                        <th class="text-center bg-primary text-white">DOB</th>
-                        <th class="text-center bg-primary text-white">Last Perches</th>
-                        <th class="text-center bg-primary text-white">Total Points</th>
-                        <th class="text-center bg-primary text-white">Contact Number</th>
-                        <th class="text-center bg-primary text-white">Level</th>
+                        <th class="text-center bg-primary text-white">Category</th>
+                        <th class="text-center bg-primary text-white">Contact 1</th>
+                        <th class="text-center bg-primary text-white">Contact 2</th>
                         <th class="text-center bg-primary text-white">Email</th>
                         <th class="text-center bg-primary text-white">Address</th>
                         <th class="text-center bg-primary text-white">Action</th>
                     </tr>
                     </thead>
-                    <tbody class="mt-5" id="tbl-customer-body" style="font-size: 12px"></tbody>
+                    <tbody class="mt-5" id="tbl-supplier-body" style="font-size: 13px"></tbody>
                     <tfoot>
-                    <tr style="font-size: 13px">
-                        <th class="text-center">ID</th>
+                    <tr style="font-size: 12px">
+                        <th class="text-center">SupplierCode</th>
                         <th class="text-center">Name</th>
-                        <th class="text-center">Gender</th>
-                        <th class="text-center">Join date</th>
-                        <th class="text-center">DOB</th>
-                        <th class="text-center">Last Perches</th>
-                        <th class="text-center">Total Points</th>
-                        <th class="text-center">Contact Number</th>
-                        <th class="text-center">Level</th>
+                        <th class="text-center">Category</th>
+                        <th class="text-center">Contact 1</th>
+                        <th class="text-center">Contact 2</th>
                         <th class="text-center">Email</th>
                         <th class="text-center">Address</th>
                         <th class="text-center">Action</th>
@@ -196,15 +185,16 @@
                     </tfoot>
                 </table>
             </section>
-        </div>
+        </section>
+
     </div>
 
-    <div class="modal fade" id="customer-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="supplier-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
          aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
-                    <h1 class="modal-title fs-5 " id="staticBackdropLabel">Add New Customer</h1>
+                    <h1 class="modal-title fs-5 " id="staticBackdropLabel">Add New Supplier</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -216,46 +206,50 @@
                                     <input type="text" class="form-control" id="customer-name">
                                 </div>
                                 <div class="mb-1">
-                                    <label for="customer-gender" class="form-label">Customer Gender</label>
-                                    <select class="form-select" aria-label="Default select example" id="customer-gender">
+                                    <label for="supplier-category" class="form-label">Supplier Category</label>
+                                    <select class="form-select" aria-label="Default select example" id="supplier-category">
                                         <option selected></option>
-                                        <option value="MALE">MALE</option>
-                                        <option value="FEMALE">FEMALE</option>
+                                        <option value="INTERNATIONAL">INTERNATIONAL</option>
+                                        <option value="LOCAL">LOCAL</option>
                                     </select>
                                 </div>
                                 <div class="mb-1">
-                                    <label for="customer-contact" class="form-label" id="lbl-status">Customer Contact</label>
-                                    <input type="text" class="form-control" id="customer-contact">
+                                    <label for="sup-contact-1" class="form-label" id="lbl-status">Supplier Contact No 1</label>
+                                    <input type="text" class="form-control" id="sup-contact-1">
                                 </div>
                                 <div class="mb-1">
-                                    <label for="customer-email" class="form-label">Email</label>
-                                    <input type="text" class="form-control" id="customer-email">
+                                    <label for="sup-contact-2" class="form-label">Supplier Contact No 2</label>
+                                    <input type="text" class="form-control" id="sup-contact-2">
                                 </div>
                                 <div class="mb-1">
-                                    <label for="customer-dob" class="form-label">Customer Birthday</label>
-                                    <input type="date" class="form-control" id="customer-dob">
+                                    <label for="sup-email" class="form-label">Email</label>
+                                    <input type="text" class="form-control" id="sup-email">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="mb-1">
-                                    <label for="customer-address-lane" class="form-label">Address main Lane</label>
-                                    <input type="text" class="form-control" id="customer-address-lane">
+                                    <label for="sup-address-lane" class="form-label">Address main Lane</label>
+                                    <input type="text" class="form-control" id="sup-address-lane">
                                 </div>
                                 <div class="mb-1">
-                                    <label for="customer-address-state" class="form-label">Address main State</label>
-                                    <input type="text" class="form-control" id="customer-address-state">
+                                    <label for="sup-address-state" class="form-label">Address main State</label>
+                                    <input type="text" class="form-control" id="sup-address-state">
                                 </div>
                                 <div class="mb-1">
-                                    <label for="customer-address-country" class="form-label">Address main Country</label>
-                                    <input type="text" class="form-control" id="customer-address-country">
+                                    <label for="sup-address-country" class="form-label">Address main Country</label>
+                                    <input type="text" class="form-control" id="sup-address-country">
                                 </div>
                                 <div class="mb-1">
-                                    <label for="customer-address-city" class="form-label">Address main city</label>
-                                    <input type="text" class="form-control" id="customer-address-city">
+                                    <label for="sup-address-city" class="form-label">Address main city</label>
+                                    <input type="text" class="form-control" id="sup-address-city">
                                 </div>
                                 <div class="mb-1">
-                                    <label for="customer-address-code" class="form-label">Address postal Code</label>
-                                    <input type="text" class="form-control" id="customer-address-code">
+                                    <label for="sup-address-code" class="form-label">Address postal Code</label>
+                                    <input type="text" class="form-control" id="sup-address-code">
+                                </div>
+                                <div class="mb-1">
+                                    <label for="sup-origin-country" class="form-label">Origin Country</label>
+                                    <input type="text" class="form-control" id="sup-origin-country">
                                 </div>
                             </div>
                         </div>
@@ -263,7 +257,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="btn-save-customer">Add Supplier</button>
+                    <button type="button" class="btn btn-primary" id="btn-add-sup">Add Supplier</button>
                 </div>
             </div>
         </div>
@@ -271,6 +265,17 @@
 
 </div>
 
+<script src="../../assets/js/jquery.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="../../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/sweetAlerts.js"></script>
+<script src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.0.5/js/dataTables.bootstrap5.js"></script>
+<script src="../../util/base.js"></script>
+<script src="../../controller/commonDetailController.js"></script>
+<script src="../../controller/userSupplierController.js"></script>
+<script src="../../validation/supplierValidation.js"></script>
 <script src="../../assets/js/jquery.js"></script>
 <script src="../../assets/js/bootstrap.js"></script>
 <script src="../../assets/js/sweetAlerts.js"></script>
@@ -281,8 +286,17 @@
 <script src="../../assets/js/sidebar.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-<script src="../../controller/CommonDetailsController.js"></script>
-<script src="../../controller/UserCustomerController.js"></script>
+<script>
 
+</script>
+<script>
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+    });
+
+</script>
 </body>
+
 </html>
