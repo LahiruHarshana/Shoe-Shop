@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shoe Shop | Inventory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/sidebar.css">
+    <link href="../../assets/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+    <link rel="stylesheet" href="../../assets/css/index.css">
+    <style>
+
+        ::-webkit-scrollbar {
+            width: 0.4vw;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--main-color);
+            border-radius: 10px;
+        }
+
+        #bg-admin {
+            z-index: 100;
+            background-color: rgba(29, 30, 30, 0.32);
+        }
+
+        .bg-image-change {
+            background-image: url('../../assets/images/admin-bg.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            z-index: -1;
+        }
+
+        @keyframes changeImage {
+            0% {
+                background-image: url('../../assets/images/admin-bg.jpg');
+            }
+            25% {
+                /*background-image: url('../../assets/images/admin-bg-2.jpg');*/
+            }
+            50% {
+                /*background-image: url('../../assets/images/admin-bg-3.jpg');*/
+            }
+            75% {
+                /*background-image: url('../../assets/images/admin-bg-4.jpg');*/
+            }
+            100% {
+                /*background-image: url('../../assets/images/admin-bg.jpg');*/
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <div class="navigation">
+        <ul>
+            <li>
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="logo-apple"></ion-icon>
+                    </span>
+                    <span class="title">Brand Name</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="index.html">
+                    <span class="icon">
+                        <ion-icon name="home-outline"></ion-icon>
+                    </span>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="customer.html">
+                    <span class="icon">
+                        <ion-icon name="people-outline"></ion-icon>
+                    </span>
+                    <span class="title">Customers</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="supplier.html">
+                    <span class="icon">
+                        <ion-icon name="chatbubble-outline"></ion-icon>
+                    </span>
+                    <span class="title">Suppliers</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="employee.html">
+                    <span class="icon">
+                        <ion-icon name="help-outline"></ion-icon>
+                    </span>
+                    <span class="title">Employees</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="settings.html">
+                    <span class="icon">
+                        <ion-icon name="settings-outline"></ion-icon>
+                    </span>
+                    <span class="title">Settings</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                    </span>
+                    <span class="title">Password</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="log-out-outline"></ion-icon>
+                    </span>
+                    <span class="title">Sign Out</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main">
+        <div class="topbar">
+            <div class="toggle">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+
+            <div class="search">
+                <label>
+                    <input type="text" placeholder="Search here">
+                    <ion-icon name="search-outline"></ion-icon>
+                </label>
+            </div>
+
+            <div class="user">
+                <img src="../../assets/imgs/customer01.jpg" alt="">
+            </div>
+        </div>
+        <section class="container-fluid">
+            <div class="d-flex justify-content-end mt-3">
+                <button class="btn btn-primary" id="btn-open-model">Add New Inventory</button>
+            </div>
+            <table id="tbl-inventory" class="table table-hover table-striped" style="width:100%">
+                <thead class="bg-primary mb-2">
+                <tr class="bg-primary rounded-2 text-sm-center" style="font-size: 12px">
+                    <th class="text-center bg-primary text-white"></th>
+                    <th class="text-center bg-primary text-white">Item Code</th>
+                    <th class="text-center bg-primary text-white">Name</th>
+                    <th class="text-center bg-primary text-white">Size</th>
+                    <th class="text-center bg-primary text-white">Qty</th>
+                    <th class="text-center bg-primary text-white">Supplier Code</th>
+                    <th class="text-center bg-primary text-white">Supplier name</th>
+                    <th class="text-center bg-primary text-white">Brand</th>
+                    <th class="text-center bg-primary text-white">type</th>
+                    <th class="text-center bg-primary text-white">Discount</th>
+                    <th class="text-center bg-primary text-white">gender</th>
+                    <th class="text-center bg-primary text-white"><small>price - Sale</small></th>
+                    <th class="text-center bg-primary text-white"><small>price -Buy</small></th>
+                    <th class="text-center bg-primary text-white">Expected</th>
+                    <th class="text-center bg-primary text-white">Profit</th>
+                    <th class="text-center bg-primary text-white">Status</th>
+                    <th class="text-center bg-primary text-white">Action</th>
+                </tr>
+                </thead>
+                <tbody class="mt-5" id="tbl-item-body" style="font-size: 13px"></tbody>
+                <tfoot>
+                <tr class="bg-primary rounded-2 text-sm-center" style="font-size: 12px">
+                    <th class="text-center"></th>
+                    <th class="text-center">Item Code</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Size</th>
+                    <th class="text-center">Qty</th>
+                    <th class="text-center">Supplier Code</th>
+                    <th class="text-center">Supplier name</th>
+                    <th class="text-center">Brand</th>
+                    <th class="text-center">type</th>
+                    <th class="text-center">Discount</th>
+                    <th class="text-center">gender</th>
+                    <th class="text-center"><small>price - Sale</small></th>
+                    <th class="text-center"><small>price -Buy</small></th>
+                    <th class="text-center">Expected Profit</th>
+                    <th class="text-center">Profit margin</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Action</th>
+                </tr>
+                </tfoot>
+            </table>
+
+        </section>
+
+    </div>
+
+    <div class="modal fade" id="inventory-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h1 class="modal-title fs-5 " id="staticBackdropLabel">Add New Item</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="background-color: #e1e2e3">
+                    <form id="inventory-inputs">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-1">
+                                    <label for="item-supplier" class="form-label">Select Supplier</label>
+                                    <select class="form-select shadow-sm" aria-label="Default select example" id="item-supplier">
+                                        <option selected></option>
+                                    </select>
+                                </div>
+                                <div class="mb-1">
+                                    <label for="item-desc" class="form-label">Item Description</label>
+                                    <input type="text" class="form-control shadow-sm" id="item-desc">
+                                </div>
+                                <div class="mb-1">
+                                    <label for="item-status" class="form-label">Item Status</label>
+                                    <select class="form-select shadow-sm" aria-label="Default select example" id="item-status">
+                                        <option selected></option>
+                                        <option value="AVAILABLE">AVAILABLE</option>
+                                        <option value="NOT_AVAILABLE">NOT_AVAILABLE</option>
+                                        <option value="LOW_STOCK">LOW_STOCK</option>
+                                    </select>
+                                </div>
+                                <div class="mb-1">
+                                    <label for="item-qty" class="form-label" id="lbl-status">Item Qty</label>
+                                    <input type="text" class="form-control shadow-sm" id="item-qty">
+                                </div>
+                                <div class="mb-1">
+                                    <label for="item-size" class="form-label">Size</label>
+                                    <input type="number" class="form-control shadow-sm" id="item-size">
+                                </div>
+                                <div class="mb-1">
+                                    <label for="item-discount" class="form-label">Item Discount</label>
+                                    <input type="number" class="form-control shadow-sm" id="item-discount">
+                                </div>
+                                <div class="mb-1">
+                                    <label for="item-gender" class="form-label">Item Gender</label>
+                                    <select class="form-select shadow-sm" aria-label="Default select example" id="item-gender">
+                                        <option selected></option>
+                                        <option value="MALE">MALE</option>
+                                        <option value="FEMALE">FEMALE</option>
+                                        <option value="KIDS">KIDS</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+
+                                <label>Supplier Name</label>
+                                <div style="height: 35px" class="bg-white rounded-2 d-flex mt-2 mb-1 justify-content-sm-between p-2">
+                                    <label class="text-primary" id="supplier-name"></label>
+                                </div>
+                                <div class="mb-1">
+                                    <label for="item-userbility" class="form-label">Formal Or Casual</label>
+                                    <select class="form-select shadow-sm" aria-label="Default select example" id="item-userbility">
+                                        <option selected></option>
+                                        <option value="FORMAL">FORMAL</option>
+                                        <option value="CAUSAL">CAUSAL</option>
+                                        <option value="SPORTS">SPORTS</option>
+                                    </select>
+                                </div>
+                                <div class="mb-1">
+                                    <label for="item-buying-price" class="form-label">Item Buying Price</label>
+                                    <input type="text" class="form-control shadow-sm" id="item-buying-price">
+                                </div>
+                                <div class="mb-1">
+                                    <label for="item-selling-price" class="form-label">Item Selling Price</label>
+                                    <input type="text" class="form-control shadow-sm" id="item-selling-price">
+                                </div>
+                                <div class="mb-1">
+                                    <label for="item-expect-profit" class="form-label">Item expected Profit</label>
+                                    <input type="text" class="form-control shadow-sm" id="item-expect-profit">
+                                </div>
+                                <div class="mb-1">
+                                    <label for="profit-margin" class="form-label">Profit Margin</label>
+                                    <input type="text" class="form-control shadow-sm" id="profit-margin">
+                                </div>
+                                <div class="mb-1">
+                                    <label for="Item-brand" class="form-label">Item Brand</label>
+                                    <input type="text" class="form-control shadow-sm" id="item-brand">
+                                </div>
+                            </div>
+                            <div class="mb-1">
+                                <div class="d-flex justify-content-center m-2">
+                                    <img src="../../assets/images/Logo-dark.png" id="item-img-preview" class="border border-dark shadow-lg rounded-2" style="width: 190px;height: 150px">
+                                </div>
+                                <input type="file" class="form-control w-50 m-auto" id="item-img">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer" style="background-color: #e1e2e3">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="btn-add-item">Add Item</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bg-transparent" id="spinner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg bg-transparent">
+            <div class="modal-content bg-transparent">
+                <div class="modal-body bg-transparent">
+                    <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<script src="../../assets/js/jquery.js"></script>
+<script src="../../assets/js/bootstrap.js"></script>
+<script src="../../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/sweetAlerts.js"></script>
+<script src="../../util/base.js"></script>
+<script src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.0.5/js/dataTables.bootstrap5.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="../../controller/inventoryController.js"></script>
+<script src="../../controller/commonDetailController.js"></script>
+<script src="../../assets/js/sidebar.js"></script>
+</body>
+</html>
