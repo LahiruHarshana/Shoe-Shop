@@ -9,9 +9,9 @@ class user {
     }
 }
 
-$('#btn-login').on('click', function () {
-    var username = $('#txt-user-name').val();
-    var password = $('#txt-password').val();
+$('#loginBtn').on('click', function () {
+    var username = $('#usrName').val();
+    var password = $('#txtPswd').val();
     var data = {
         username: username,
         password: password

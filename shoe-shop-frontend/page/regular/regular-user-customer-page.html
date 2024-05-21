@@ -2,167 +2,80 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Shoe Shop | Customer</title>
+    <title>Shoe Shop Customer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../assets/css/regular-user-sidebar/index.css">
     <link href="../../assets/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
     <link rel="stylesheet" href="../../assets/css/index.css">
-    <style>
 
-        ::-webkit-scrollbar {
-            width: 0.4vw;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background-color: var(--main-color);
-            border-radius: 10px;
-        }
-
-        #bg-admin {
-            z-index: 100;
-            background-color: rgba(0, 0, 0, 0.2);
-        }
-
-        .bg-image-change {
-            background-image: url('../../assets/images/admin-bg.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            height: 100vh;
-            width: 100%;
-            position: fixed;
-            z-index: -1;
-        }
-
-        @keyframes changeImage {
-            0% {
-                background-image: url('../../assets/images/admin-bg.jpg');
-            }
-            25% {
-                /*background-image: url('../../assets/images/admin-bg-2.jpg');*/
-            }
-            50% {
-                /*background-image: url('../../assets/images/admin-bg-3.jpg');*/
-            }
-            75% {
-                /*background-image: url('../../assets/images/admin-bg-4.jpg');*/
-            }
-            100% {
-                /*background-image: url('../../assets/images/admin-bg.jpg');*/
-            }
-        }
-    </style>
 </head>
 <body>
 
-<div>
-    <div class="navigation">
-        <ul>
-            <li>
-                <a href="#">
-                        <span class="icon">
-                            <ion-icon name="logo-apple"></ion-icon>
-                        </span>
-                    <span class="title">Brand Name</span>
+<main class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto px-0 position-fixed z-3" style="background-color: var(--main-color)">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
+                <a href="regular-user-order.html"
+                   class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none">
+                    <img src="../../assets/images/Logo-dark.png" style="width: 40px; height: 40px" class="m-auto">
                 </a>
-            </li>
-
-            <li>
-                <a href="index.html">
-                        <span class="icon">
-                            <ion-icon name="home-outline"></ion-icon>
-                        </span>
-                    <span class="title">Dashboard</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="customer.html">
-                        <span class="icon">
-                            <ion-icon name="person-outline"></ion-icon>
-                        </span>
-                    <span class="title">Customer</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="supplier.html">
-                        <span class="icon">
-                            <ion-icon name="people-outline"></ion-icon>
-                        </span>
-                    <span class="title">Supplier</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="employee.html">
-                        <span class="icon">
-                            <ion-icon name="people-circle-outline"></ion-icon>
-                        </span>
-                    <span class="title">Employee</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="refund.html">
-                        <span class="icon">
-                            <ion-icon name="refresh-outline"></ion-icon>
-                        </span>
-                    <span class="title">Refund</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="branch.html">
-                        <span class="icon">
-                            <ion-icon name="business-outline"></ion-icon>
-                        </span>
-                    <span class="title">Branch</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="inventory.html">
-                        <span class="icon">
-                            <ion-icon name="file-tray-stacked-outline"></ion-icon>
-                        </span>
-                    <span class="title">Inventory</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="manager.html">
-                        <span class="icon">
-                            <ion-icon name="person-circle-outline"></ion-icon>
-                        </span>
-                    <span class="title">Manager</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="main">
-        <div class="topbar">
-            <div class="toggle">
-                <ion-icon name="menu-outline"></ion-icon>
-            </div>
-
-            <div class="user">
-                <img src="../../assets/imgs/customer01.jpg" alt="">
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li class="nav-item">
+                        <a href="regular-user-order.html" class="nav-link align-middle px-0">
+                            <i class="bi bi-layout-text-sidebar fs-4"></i>
+                        </a>
+                    </li>
+                    <!--                    <li>-->
+                    <!--                        <a href="sample.html" class="nav-link px-0 align-middle">-->
+                    <!--                            <i class="bi bi-file-person fs-4"></i></a>-->
+                    <!--                    </li>-->
+                    <!--                    <li>-->
+                    <!--                        <a href="sample.html" class="nav-link px-0 align-middle">-->
+                    <!--                            <i class="bi bi-archive-fill fs-4"></i></i></a>-->
+                    <!--                    </li>-->
+                    <li>
+                        <a href="regular-user-supplier-page.html" class="nav-link px-0 align-middle">
+                            <i class="bi bi-truck fs-4"></i></i></a>
+                    </li>
+                    <li>
+                        <a href="regular-user-customer-page.html" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people text-dark"></i></a>
+                    </li>
+                </ul>
+                <hr>
+                <div class="dropdown pb-4">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                       id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img id="user-image" alt="hugenerd" width="30" height="30"
+                             class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="../../index.html">Sign out</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div id="" class="w-100">
-            <section class="mt-2 container-fluid d-flex justify-content-end">
-                <button class="btn btn-sm btn-primary" id="btn-add-customer" style="height: 35px" type="button">Add loyalty Customer
+
+        <section class="col overflow-hidden" style="margin-left: 70px">
+            <div class="d-flex justify-content-sm-between p-4">
+                <h4>Customer&nbsp;<i class="fs-4 bi-people text-dark"></i></h4>
+                <button class="btn btn-sm btn-primary" style="height: 35px" id="btn-add-customer" type="button">Add loyalty Customer
                 </button>
-            </section>
-            <section class="p-3">
-                <table id="tbl-customer" class="table table-hover table-striped" style="width:100%">
+            </div>
+            <!--            <hr>-->
+            <section class="container">
+                <table id="tbl-customer-regeular" class="table table-hover table-striped" style="width:100%">
                     <thead class="bg-primary mb-2">
                     <tr class="bg-primary rounded-2" style="font-size: 13px">
-                        <th class="text-center bg-primary text-white">ID</th>
                         <th class="text-center bg-primary text-white">Name</th>
+                        <th class="text-center bg-primary text-white">ID</th>
                         <th class="text-center bg-primary text-white">Gender</th>
                         <th class="text-center bg-primary text-white">Join date</th>
                         <th class="text-center bg-primary text-white">DOB</th>
@@ -172,10 +85,9 @@
                         <th class="text-center bg-primary text-white">Level</th>
                         <th class="text-center bg-primary text-white">Email</th>
                         <th class="text-center bg-primary text-white">Address</th>
-                        <th class="text-center bg-primary text-white">Action</th>
                     </tr>
                     </thead>
-                    <tbody class="mt-5" id="tbl-customer-body" style="font-size: 12px"></tbody>
+                    <tbody class="mt-5" id="tbl-customer-regeular-body" style="font-size: 14px"></tbody>
                     <tfoot>
                     <tr style="font-size: 13px">
                         <th class="text-center">ID</th>
@@ -189,12 +101,11 @@
                         <th class="text-center">Level</th>
                         <th class="text-center">Email</th>
                         <th class="text-center">Address</th>
-                        <th class="text-center">Action</th>
                     </tr>
                     </tfoot>
                 </table>
             </section>
-        </div>
+        </section>
     </div>
 
     <div class="modal fade" id="customer-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -267,7 +178,7 @@
         </div>
     </div>
 
-</div>
+</main>
 
 <script src="../../assets/js/jquery.js"></script>
 <script src="../../assets/js/bootstrap.js"></script>
@@ -276,11 +187,8 @@
 <script src="../../util/base.js"></script>
 <script src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
 <script src="https://cdn.datatables.net/2.0.5/js/dataTables.bootstrap5.js"></script>
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-<script src="../../controller/userCustomerController.js"></script>
 <script src="../../controller/commonDetailController.js"></script>
-<script src="../../assets/js/sidebar.js"></script>
-</script>
+<script src="../../controller/userCustomerController.js"></script>
+
 </body>
 </html>

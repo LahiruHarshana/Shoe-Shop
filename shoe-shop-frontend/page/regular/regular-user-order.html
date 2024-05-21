@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../assets/images/Logo.png">
+    <title>Hello shoe pvt regular user</title>
+    <link href="../../assets/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../../assets/css/regular-user-sidebar/index.css">
+    <link rel="stylesheet" href="../../assets/css/spiner/spiner.css">
+
+</head>
+<body>
+<main class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto px-0 position-fixed z-3" style="background-color: var(--main-color)">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
+                <a href="regular-user-order.html"
+                   class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none">
+                    <img src="../../assets/images/Logo-dark.png" style="width: 40px; height: 40px" class="m-auto">
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li class="nav-item">
+                        <a href="regular-user-order.html" class="nav-link align-middle px-0">
+                            <i class="bi bi-layout-text-sidebar fs-4 text-dark"></i>
+                        </a>
+                    </li>
+<!--                    <li>-->
+<!--                        <a href="sample.html" class="nav-link px-0 align-middle">-->
+<!--                            <i class="bi bi-file-person fs-4"></i></a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="#" class="nav-link px-0 align-middle">-->
+<!--                            <i class="bi bi-archive-fill fs-4"></i></i></a>-->
+<!--                    </li>-->
+                    <li>
+                        <a href="regular-user-supplier-page.html" class="nav-link px-0 align-middle">
+                            <i class="bi bi-truck fs-4"></i></i></a>
+                    </li>
+                    <li>
+                        <a href="regular-user-customer-page.html" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i></a>
+                    </li>
+                </ul>
+                <hr>
+                <div class="dropdown pb-4">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                       id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img id="user-image" alt="hugenerd" width="30" height="30"
+                             class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="../../index.html">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <section class="col overflow-hidden" style="margin-left: 70px">
+            <section class="row flex-nowrap">
+                <section class="col-9 p-3">
+                    <div class="d-flex justify-content-sm-between">
+                        <h4>Order&nbsp; <i class="bi bi-layout-text-sidebar text-dark fs-4"></i></h4>
+                        <div class="input-group mb-3 me-5" style="width: 300px">
+                            <span class="input-group-text" id="basic-addon1"><i
+                                    class="bi bi-search-heart text-secondary"></i></span>
+                            <input type="text" class="form-control" id="txt-search-product" placeholder="Search Product" aria-label="Search"
+                                   aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+
+                    <div class="draggable slider d-flex flex-nowrap z-n1">
+                        <!--                        buton-->
+                        <button class="btn btn-secondary rounded-circle" id="btn-move-left"><</button>
+                        <ul class="nav ms-3 nav-pills overflow-hidden d-flex flex-nowrap" id="brand-list"
+                            role="tablist"></ul>
+                        <!--                        button-->
+                        <button class="btn btn-secondary rounded-circle me-2" id="btn-move-right"> ></button>
+                    </div>
+                    <div class="tab-content overflow-y-scroll" style="height: 83vh">
+                        <div class="row row-cols-md-2 row-cols-sm-6 row-cols-lg-4 flex-wrap me-2"
+                             id="product-content"></div>
+                    </div>
+                </section>
+                <section class="col-3 border-start position-fixed end-0 overflow-y-scroll" style="height: 100vh">
+                    <section class="p-3">
+                        <h4>Order Details</h4>
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab-demo" role="tablist">
+                                <a class="nav-link active" id="nav-demo-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                                        aria-selected="true">Demo
+                                </a>
+                                <a class="nav-link" id="nav-tab-loyality" data-bs-toggle="tab"
+                                        data-bs-target="#nav-profile" type="button" role="tab"
+                                        aria-controls="nav-profile" aria-selected="false">Loyalty
+                                </a>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                                 aria-labelledby="nav-home-tab" tabindex="0">
+                                <div class="">
+                                    <h6 class="text-secondary">Name</h6>
+                                    <input id="txt-demo-name" type="text" class="form-control input-group-sm" placeholder="Customer Name">
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="nav-profile" role="tabpanel"
+                                 aria-labelledby="nav-profile-tab" tabindex="0">
+                                <div class="form-group mt-1">
+                                    <label for="txt-cus-contact">Customer Contact</label>
+                                    <input type="text" class="form-control" placeholder="Contact No" list="list-customerList" id="txt-cus-contact">
+                                    <datalist id="list-customerList">
+
+                                    </datalist>
+                                </div>
+                                <div class="d-flex justify-content-sm-between mt-2">
+                                    <h6 class="text-secondary" >Customer Name</h6>
+                                    <small class="text-dark" id="txt-customer-name"></small>
+                                </div>
+                                <div class="d-flex justify-content-sm-between mt-1">
+                                    <h6 class="text-secondary">Loyalty Point</h6>
+                                    <small class="text-dark" id="txt-point"></small>
+                                </div>
+                                <div class="d-flex justify-content-sm-between mt-1">
+                                    <h6 class="text-secondary">Added Point</h6>
+                                    <small class="text-dark" id="added-new-point">0</small>
+                                </div>
+                            </div>
+                        </div>
+                        <small class="text-secondary">Product</small>
+                        <section class="mt-1 overflow-y-scroll border" style="height: 250px" id="cart"></section>
+
+                        <div class="d-flex justify-content-sm-around mt-1" id="pay-method">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="CASH" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Cash
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="CARD" name="flexRadioDefault" id="flexRadioDefault2">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Card
+                                </label>
+                            </div>
+                        </div>
+
+                        <section>
+                            <input id="txt-cash" type="text" class="form-control mt-1" placeholder="CASH">
+                        </section>
+
+                        <section class="bg-info-subtle rounded-2 mt-1 p-2">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="">Subtotal</h5>
+                                <h5 id="txt-sub-total">RS.</h5>
+                            </div>
+                        </section>
+                        <button class="btn btn-danger w-100 mt-1" id="btn-clear">Clear</button>
+                        <button class="btn btn-primary w-100 mt-1" id="btn-proceed-order">Proceed Order</button>
+                    </section>
+                </section>
+            </section>
+        </section>
+    </div>
+
+    <div class="overlay"></div>
+    <div class="spanner">
+        <div class="loader"></div>
+        <p>Uploading music file, please be patient.</p>
+    </div>
+
+    <div class="modal fade" id="payment-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form id="supplier-inputs">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-1">
+                                    <label for="customer-gender" class="form-label">Customer Gender</label>
+                                    <select class="form-select" aria-label="Default select example" id="customer-gender">
+                                        <option selected></option>
+                                        <option value="BOC">BOC</option>
+                                        <option value="HNB">HNB</option>
+                                        <option value="PEOPLES">PEOPLES</option>
+                                        <option value="SAMPATH">SAMPATH</option>
+                                        <option value="NSB">NSB</option>
+                                        <option value="COMERCEL">COMERCEL</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-1">
+                                    <label for="customer-contact" class="form-label" id="lbl-status">Customer Contact</label>
+                                    <input type="text" class="form-control" id="customer-contact">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="btn-payment">Add Payment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+<script src="../../assets/js/jquery.js"></script>
+<script src="../../assets/js/sweetAlerts.js"></script>
+<script src="../../util/base.js"></script>
+<script src="../../assets/js/bootstrap.bundle.js"></script>
+<script src="../../controller/commonDetailController.js"></script>
+<script src="../../controller/userOrderController.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', e => {
+        $('#list-customerList').autocomplete
+    }, false);
+</script>
+</body>
+</html>
