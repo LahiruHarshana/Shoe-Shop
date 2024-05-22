@@ -1,7 +1,7 @@
 let supplierId;
 
 $('#btn-add-modal').on('click', function () {
-    $('#btn-add-sup').text('Add Supplier')
+    $('#btn-add-sup').text('Add Supplier');
     $('#supplier-modal').modal('show');
 });
 
@@ -38,42 +38,14 @@ $('#btn-add-sup').on('click', function () {
             data: JSON.stringify(supplier),
             success: function (data) {
                 $('#supplier-modal').modal('hide');
+                showToast('success', data);
                 loadSuppliers();
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.onmouseenter = Swal.stopTimer;
-                        toast.onmouseleave = Swal.resumeTimer;
-                    }
-                });
-                Toast.fire({
-                    icon: "success",
-                    title: data
-                });
             },
             error: function (error) {
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.onmouseenter = Swal.stopTimer;
-                        toast.onmouseleave = Swal.resumeTimer;
-                    }
-                });
-                Toast.fire({
-                    icon: "error",
-                    title: 'Supplier not updated !'
-                });
+                showToast('error', 'Supplier not updated!');
             }
         });
-    }else {
+    } else {
         $.ajax({
             type: 'POST',
             url: BASE_URL + 'api/v1/suppliers',
@@ -84,45 +56,14 @@ $('#btn-add-sup').on('click', function () {
             data: JSON.stringify(supplier),
             success: function (data) {
                 $('#supplier-modal').modal('hide');
+                showToast('success', data);
                 loadSuppliers();
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.onmouseenter = Swal.stopTimer;
-                        toast.onmouseleave = Swal.resumeTimer;
-                    }
-                });
-                Toast.fire({
-                    icon: "success",
-                    title: data
-                });
             },
             error: function (error) {
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.onmouseenter = Swal.stopTimer;
-                        toast.onmouseleave = Swal.resumeTimer;
-                    }
-                });
-                Toast.fire({
-                    icon: "error",
-                    title: 'Supplier not added !'
-                });
+                showToast('error', 'Supplier not added!');
             }
         });
     }
-
-
-
 });
 
 function loadSuppliers() {
@@ -133,7 +74,7 @@ function loadSuppliers() {
             Authorization: 'Bearer ' + user.jwt
         },
         success: function (data) {
-            console.log(data)
+            console.log(data);
             let supplier = data;
             let html = '';
             supplier.forEach(supplier => {
@@ -145,30 +86,28 @@ function loadSuppliers() {
                    <td class="text-center">${supplier.contact.land}</td>
                    <td class="text-center">${supplier.contact.mobile}</td>
                    <td class="text-center">${supplier.email}</td>
-                   <td class="text-center"> ${supplier.address.lane} , ${supplier.address.mainCity},${supplier.address.mainState},${supplier.address.mainCountry},${supplier.address.postalCode}</td>
-                      <td class="text-center">
-                          <div class="d-flex">
-                          <button class="btn btn-sm btn-primary btn-supplier-edit"><i class="bi bi-pencil-square"></i></button>
-                          <button class="btn btn-sm btn-danger ms-2 btn-supplier-delete"><i class="bi bi-person-x-fill"></i></button>
-                          </div>
-                      </td>
-              </tr>
+                   <td class="text-center">${supplier.address.lane}, ${supplier.address.mainCity}, ${supplier.address.mainState}, ${supplier.address.mainCountry}, ${supplier.address.postalCode}</td>
+                   <td class="text-center">
+                       <div class="d-flex">
+                           <button class="btn btn-sm btn-primary btn-supplier-edit"><i class="bi bi-pencil-square"></i></button>
+                           <button class="btn btn-sm btn-danger ms-2 btn-supplier-delete"><i class="bi bi-person-x-fill"></i></button>
+                       </div>
+                   </td>
+               </tr>
                 `;
             });
             $('#tbl-supplier-body').html(html);
             initializeTable();
             setEvent();
-        },error: function (error) {
+        },
+        error: function (error) {
             console.log(error);
-        }});
+        }
+    });
 }
 
-loadSuppliers();
-
-function setEvent(){
-
-
-    $('.btn-supplier-edit').on('click', function(){
+function setEvent() {
+    $('.btn-supplier-edit').on('click', function () {
         $('#btn-add-sup').text('Update Supplier');
         let id = $(this).closest('tr').find('td:first-child').text();
         supplierId = id;
@@ -176,7 +115,7 @@ function setEvent(){
         $('#supplier-modal').modal('show');
     });
 
-    $('.btn-supplier-delete').on('click', function(){
+    $('.btn-supplier-delete').on('click', function () {
         let id = $(this).closest('tr').find('td:first-child').text();
         Swal.fire({
             title: 'Are you sure?',
@@ -202,40 +141,13 @@ function deleteSupplier(id) {
             Authorization: 'Bearer ' + user.jwt
         },
         success: function (data) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: "top-end",
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.onmouseenter = Swal.stopTimer;
-                    toast.onmouseleave = Swal.resumeTimer;
-                }
-            });
-            Toast.fire({
-                icon: "success",
-                title: 'Supplier deleted !'
-            });
+            showToast('success', 'Supplier deleted!');
             loadSuppliers();
         },
         error: function (error) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: "top-end",
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.onmouseenter = Swal.stopTimer;
-                    toast.onmouseleave = Swal.resumeTimer;
-                }
-            });
-            Toast.fire({
-                icon: "error",
-                title: 'Something went wrong! Please try again.'
-            });
-        }});
+            showToast('error', 'Something went wrong! Please try again.');
+        }
+    });
 }
 
 function renderSupplier(id) {
@@ -259,56 +171,42 @@ function renderSupplier(id) {
             $('#sup-origin-country').val(data.originCountry);
         },
         error: function (error) {
-            alert('Supplier not found !')
+            alert('Supplier not found!');
         }
     });
 }
 
-function initializeTable(selector) {
-    if ($.fn.DataTable.isDataTable(selector)) {
-        $(selector).DataTable().destroy();
+function initializeTable() {
+    if ($.fn.dataTable.isDataTable('#tbl-supplier')) {
+        $('#tbl-supplier').DataTable().clear().destroy();
     }
-    $(selector).DataTable({
-        destroy: true,
+    $('#tbl-supplier').DataTable({
         "language": {
             "search": "Search Supplier:",
             "lengthMenu": "Display count _MENU_",
             "info": "Showing _START_ to _END_ of _TOTAL_ records",
             "infoEmpty": "Showing 0 to 0 of 0 records",
-            "infoFiltered": "(filtered from _MAX_ total records)",
+            "infoFiltered": "(filtered from _MAX_ total records)"
         }
     });
 }
 
-function loadSuppliersForRegeular() {
-    $.ajax({
-        type: 'GET',
-        url: BASE_URL + 'api/v1/suppliers',
-        headers: {
-            Authorization: 'Bearer ' + user.jwt
-        },
-        success: function (data) {
-            console.log(data)
-            let supplier = data;
-            let html = '';
-            supplier.forEach(supplier => {
-                html += `
-               <tr>
-                   <td class="text-center">${supplier.supplierCode}</td>
-                   <td class="text-center">${supplier.supplierName}</td>
-                   <td class="text-center">${supplier.supplierCategory}</td>
-                   <td class="text-center">${supplier.contact.land}</td>
-                   <td class="text-center">${supplier.contact.mobile}</td>
-                   <td class="text-center">${supplier.email}</td>
-                   <td class="text-center"> ${supplier.address.lane} , ${supplier.address.mainCity},${supplier.address.mainState},${supplier.address.mainCountry},${supplier.address.postalCode}</td>
-              </tr>
-                `;
-            });
-            $('#tbl-supplier-regeular-body').html(html);
-            new DataTable('#tbl-supplier-regeular');
-        },error: function (error) {
-            console.log(error);
-        }});
+function showToast(icon, title) {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+    Toast.fire({
+        icon: icon,
+        title: title
+    });
 }
 
-loadSuppliersForRegeular();
+loadSuppliers();

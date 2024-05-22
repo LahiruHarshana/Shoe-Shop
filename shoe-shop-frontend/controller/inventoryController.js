@@ -1,5 +1,6 @@
 let itemCode;
 
+user = JSON.parse(localStorage.getItem('user'));
 $('#btn-open-model').on('click', function () {
     itemCode = null;
     $('#btn-add-item').text('Add Item');
@@ -203,6 +204,7 @@ function loadAllSupplierId() {
 
 
 
+
 function loadItems() {
     $.ajax({
         url: BASE_URL + 'api/v1/inventory',
@@ -228,7 +230,9 @@ function loadItems() {
 
                 html += `
                       <tr style="width: 50px" class="">
-                        <td class="text-center"><img src="https://drive.google.com/thumbnail?id=${item.itemPicture}&sz=w1000"  width="80" alt="no one"></td>
+                        <td class="text-center">
+<!--                        <img src="https://drive.google.com/thumbnail?id=${item.itemPicture}&sz=w1000"  width="80" alt="no one">-->
+                        </td>
                         <td class="text-center">${item.itemCode}</td>
                         <td class="text-center">${item.itemDescription}</td>
                         <td class="text-center">${item.size}</td>
