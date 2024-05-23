@@ -51,6 +51,7 @@ $('#loginBtn').on('click', function () {
                 }).then((result) => {
                     if (result.dismiss === Swal.DismissReason.timer) {
                         if (JSON.parse(localStorage.getItem('user')).role === 'ADMIN' || JSON.parse(localStorage.getItem('user')).role === 'SUPER_ADMIN') {
+                            console.log('admin');
                             window.location.href = "page/admin/";
                         } else if (JSON.parse(localStorage.getItem('user')).role === 'USER') {
                             window.location.href = 'page/regular/regular-user-order.html';
