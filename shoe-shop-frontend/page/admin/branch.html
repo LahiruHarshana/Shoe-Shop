@@ -54,9 +54,10 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="../../assets/css/branch.css">
 </head>
-<body>
-<div>
+<body style="background: transparent !important;">
+<div style="background: transparent !important;">
     <div class="navigation">
         <ul>
             <li>
@@ -141,44 +142,44 @@
             </li>
         </ul>
     </div>
-    <div class="main">
-        <div class="topbar">
-            <div class="toggle">
+    <div id="back" class="main">
+        <div class="topbar" style="background: transparent !important;">
+            <div class="toggle" style="background: transparent !important;">
                 <ion-icon name="menu-outline"></ion-icon>
             </div>
 
-            <div class="user">
+            <div class="user" style="background: transparent !important;">
                 <img src="../../assets/imgs/customer01.jpg" alt="">
             </div>
         </div>
-        <section class="p-3 container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <section class="">
-                        <section class="d-flex justify-content-end">
+        <section style="background: transparent !important;" class="p-3 container-fluid">
+            <div class="row" style="background: transparent !important;">
+                <div class="col-12" style="background: transparent !important;">
+                    <section style="background: transparent !important;" class="">
+                        <section class="d-flex justify-content-end" style="background: transparent !important;">
                             <button class="btn btn-primary" id="btn-branch-modal">Add New</button>
                         </section>
-                        <section class="card overflow-y-scroll mt-2 mb-5" style="height: 60vh">
+                        <section class="card overflow-y-scroll mt-2 mb-5" style="height: 60vh; background: transparent !important;">
                             <div class="card-header w-100 d-flex justify-content-sm-between"
-                                 style="background-color: var(--main-color)">
+                                 style="background-color: var(--main-color); background: transparent !important;">
                                 <small class="text-white">You Can refund this sales</small>
                                 <input type="text" class="form-control w-25" placeholder="Search">
                             </div>
-                            <div class="card-body">
-                                <table class="table table-hover">
-                                    <thead>
+                            <div style="background: transparent !important;" class="card-body">
+                                <table  style="background: transparent !important;" class="table table-hover">
+                                    <thead style="backdrop-filter: blur(20px)">
                                     <tr style="font-size: 13px">
-                                        <th scope="col">Branch Id</th>
-                                        <th scope="col">Branch Name</th>
-                                        <th scope="col">Branch Contact</th>
-                                        <th scope="col">Branch Manager</th>
-                                        <th scope="col">Employee Count</th>
-                                        <th scope="col">Branch Address</th>
-                                        <th scope="col">Branch Opened Date</th>
-                                        <th scope="col">Action</th>
+                                        <th style="background: transparent !important; color: #FFFFFF!important;" scope="col">Branch Id</th>
+                                        <th style="background: transparent !important;  color: #FFFFFF!important;" scope="col">Branch Name</th>
+                                        <th style="background: transparent !important;  color: #FFFFFF!important;" scope="col">Branch Contact</th>
+                                        <th style="background: transparent !important;  color: #FFFFFF!important;" scope="col">Branch Manager</th>
+                                        <th style="background: transparent !important; color: #FFFFFF!important;" scope="col">Employee Count</th>
+                                        <th style="background: transparent !important; color: #FFFFFF!important;" scope="col">Branch Address</th>
+                                        <th style="background: transparent !important; color: #FFFFFF!important;" scope="col">Branch Opened Date</th>
+                                        <th style="background: transparent !important; color: #FFFFFF!important;" scope="col">Action</th>
                                     </tr>
                                     </thead>
-                                    <tbody style="font-size: 14px" id="tbl-branch"></tbody>
+                                    <tbody style="font-size: 14px; background: transparent !important;" id="tbl-branch"></tbody>
                                 </table>
                             </div>
                         </section>
@@ -193,49 +194,48 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add New Item</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add New Branch</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form id="branch-inputs">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="mb-3">
+                <div class="modal-body" style="background-color: rgba(255, 255, 255, 0.2) !important;">
+                    <form id="branch-inputs" style="background-color: rgba(255, 255, 255, 0.2) !important;">
+                        <div class="row" style="background-color: rgba(255, 255, 255, 0.2) !important;">
+                            <div class="col-6" style="background-color: rgba(255, 255, 255, 0.2) !important;">
+                                <div class="mb-3" style="background-color: rgba(255, 255, 255, 0.2) !important;">
                                     <label for="branch-name" class="form-label">Branch Name</label>
-                                    <input type="text" class="form-control" id="branch-name">
+                                    <input type="text" class="form-control" id="branch-name" style="background-color: rgba(255, 255, 255, 0.2) !important;">
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-3" style="background-color: rgba(255, 255, 255, 0.2) !important;">
                                     <label for="branch-contact" class="form-label">Branch Contact</label>
-                                    <input type="text" class="form-control" id="branch-contact">
+                                    <input type="text" class="form-control" id="branch-contact" style="background-color: rgba(255, 255, 255, 0.2) !important;">
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-3" style="background-color: rgba(255, 255, 255, 0.2) !important;">
                                     <label for="branch-address-lane" class="form-label">Branch Address lane</label>
-                                    <input type="text" class="form-control" id="branch-address-lane">
+                                    <input type="text" class="form-control" id="branch-address-lane" style="background-color: rgba(255, 255, 255, 0.2) !important;">
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-3" style="background-color: rgba(255, 255, 255, 0.2) !important;">
                                     <label for="branch-address-state" class="form-label">Branch Address main State</label>
-                                    <input type="text" class="form-control" id="branch-address-state">
+                                    <input type="text" class="form-control" id="branch-address-state" style="background-color: rgba(255, 255, 255, 0.2) !important;">
                                 </div>
                             </div>
-                            <div class="col-6">
-
-                                <div class="mb-3">
+                            <div class="col-6" style="background-color: rgba(255, 255, 255, 0.2) !important;">
+                                <div class="mb-3" style="background-color: rgba(255, 255, 255, 0.2) !important;">
                                     <label for="branch-address-country" class="form-label">Branch Address main Country</label>
-                                    <input type="text" class="form-control" id="branch-address-country">
+                                    <input type="text" class="form-control" id="branch-address-country" style="background-color: rgba(255, 255, 255, 0.2) !important;">
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-3" style="background-color: rgba(255, 255, 255, 0.2) !important;">
                                     <label for="branch-address-city" class="form-label">Branch Address main city</label>
-                                    <input type="text" class="form-control" id="branch-address-city">
+                                    <input type="text" class="form-control" id="branch-address-city" style="background-color: rgba(255, 255, 255, 0.2) !important;">
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-3" style="background-color: rgba(255, 255, 255, 0.2) !important;">
                                     <label for="branch-address-code" class="form-label">Branch Address postal Code</label>
-                                    <input type="text" class="form-control" id="branch-address-code">
+                                    <input type="text" class="form-control" id="branch-address-code" style="background-color: rgba(255, 255, 255, 0.2) !important;">
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" style="background-color: rgba(255, 255, 255, 0.2) !important;">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" id="btn-add-branch">Add Branch</button>
                 </div>
