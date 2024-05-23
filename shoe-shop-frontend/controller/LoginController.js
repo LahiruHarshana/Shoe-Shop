@@ -1,6 +1,5 @@
-
-class user {
-    constructor(username, password,jwt,profilePic,role) {
+class User {
+    constructor(username, password, jwt, profilePic, role) {
         this.username = username;
         this.password = password;
         this.jwt = jwt;
@@ -9,32 +8,35 @@ class user {
     }
 }
 
-$('#loginBtn').on('click', function () {
-    var username = $('#usrName').val();
-    var password = $('#txtPswd').val();
-    var data = {
-        username: username,
-        password: password
-    };
+$(document).ready(function() {
+    $('#loginBtn').on('click', function (event) {
+        event.preventDefault();
+        var username = $('#usrName').val();
+        var password = $('#txtPswd').val();
+        var data = {
+            username: username,
+            password: password
+        };
 
-    console.log(data)
+        console.log('Data to be sent:', data);
 
-    $.ajax(
-        {
+        $.ajax({
             url: BASE_URL + 'api/auth/login',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(data),
             success: function (res) {
-                console.log(res);
+                console.log('Response from server:', res);
                 localStorage.setItem('user', JSON.stringify(res));
-                console.log(JSON.parse(localStorage.getItem('user')).jwt);
-                console.log(JSON.parse(localStorage.getItem('user')).profilePic);
-                console.log(JSON.parse(localStorage.getItem('user')).role);
-                console.log(JSON.parse(localStorage.getItem('user')).username);
+                let user = JSON.parse(localStorage.getItem('user'));
+                console.log('JWT:', user.jwt);
+                console.log('ProfilePic:', user.profilePic);
+                console.log('Role:', user.role);
+                console.log('Username:', user.username);
+
                 let timerInterval;
                 Swal.fire({
-                    title: "Login SuccessFull !!!, Please Wait...",
+                    title: "Login Successful! Please Wait...",
                     html: "I will close in <b></b> milliseconds.",
                     timer: 2000,
                     timerProgressBar: true,
@@ -50,27 +52,26 @@ $('#loginBtn').on('click', function () {
                     }
                 }).then((result) => {
                     if (result.dismiss === Swal.DismissReason.timer) {
-                        if (JSON.parse(localStorage.getItem('user')).role === 'ADMIN' || JSON.parse(localStorage.getItem('user')).role === 'SUPER_ADMIN') {
-                            console.log('admin');
+                        if (user.role === 'ADMIN' || user.role === 'SUPER_ADMIN') {
+                            console.log('Redirecting to admin page');
                             window.location.href = "page/admin/";
-                        } else if (JSON.parse(localStorage.getItem('user')).role === 'USER') {
+                        } else if (user.role === 'USER') {
+                            console.log('Redirecting to user page');
                             window.location.href = 'page/regular/regular-user-order.html';
                         } else {
-                            alert('invalid !');
+                            alert('Invalid role!');
                         }
-                    } else {
-                        alert('invalid !');
                     }
                 });
             },
             error: function (res) {
+                console.log('Error response from server:', res);
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
                     text: "Invalid username or password!"
                 });
             }
-        }
-    )
-
+        });
+    });
 });
