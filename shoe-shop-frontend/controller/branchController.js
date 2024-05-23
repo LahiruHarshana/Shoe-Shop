@@ -201,15 +201,15 @@ function getAllBranches() {
             branches.forEach(branch => {
                 html += `
                <tr style="font-size: 13px">
-                   <td scope="row">${branch.branchId}</td>
-                   <td>${branch.branchName}</td>
-                   <td>${branch.branchContact}</td>
-                   <td>${branch.branchManager === null ? 'not assign' : branch.branchManager}</td>
-                   <td>${branch.noOfEmployees === null ? 'not assign' : branch.noOfEmployees}</td>
-                   <td>${branch.address.lane}, ${branch.address.mainCity}, ${branch.address.mainState}, ${branch.address.postalCode},${branch.address.mainCountry}</td>
-                   <td>${branch.createdDate}</td>
-                   <td class="d-flex h-100">
-                       <button style="height: 30px" class="btn btn-sm btn-outline-primary btn-edit-branch">
+                   <td style="background: rgba(255,255,255,0.5);color: #FFFFFF" scope="row">${branch.branchId}</td>
+                   <td style="background: rgba(255,255,255,0.5);color: #FFFFFF">${branch.branchName}</td>
+                   <td style="background: rgba(255,255,255,0.5);color: #FFFFFF">${branch.branchContact}</td>
+                   <td style="background: rgba(255,255,255,0.5);color: #FFFFFF">${branch.branchManager === null ? 'not assign' : branch.branchManager}</td>
+                   <td style="background: rgba(255,255,255,0.5);color: #FFFFFF">${branch.noOfEmployees === null ? 'not assign' : branch.noOfEmployees}</td>
+                   <td style="background: rgba(255,255,255,0.5);color: #FFFFFF">${branch.address.lane}, ${branch.address.mainCity}, ${branch.address.mainState}, ${branch.address.postalCode},${branch.address.mainCountry}</td>
+                   <td style="background: rgba(255,255,255,0.5);color: #FFFFFF">${branch.createdDate}</td>
+                   <td style="background: rgba(255,255,255,0.5)" class="d-flex h-100">
+                       <button style="height: 30px;color: #FFFFFF;" class="btn btn-sm btn-outline-primary btn-edit-branch">
                            <i class="bi bi-pencil-square"></i>
                        </button>
                        <button style="height: 30px" class="btn btn-sm ms-2 btn-outline-danger btn-branch-delete">
