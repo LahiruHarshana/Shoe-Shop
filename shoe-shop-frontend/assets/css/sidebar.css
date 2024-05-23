@@ -61,6 +61,8 @@ body {
     background-color: var(--white);
 }
 
+
+
 .navigation ul li:nth-child(1) {
     margin-bottom: 40px;
     pointer-events: none;
@@ -100,6 +102,8 @@ body {
     text-align: start;
     white-space: nowrap;
 }
+
+
 
 /* --------- curve outside ---------- */
 .navigation ul li:hover a::before,
