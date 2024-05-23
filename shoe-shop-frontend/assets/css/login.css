@@ -16,5 +16,11 @@ body{
 }
 
 .wrapper{
+    width: 420px;
+    background: purple;
+    color: #FFFFFF;
+}
+
+.wrapper h1{
     
 }
