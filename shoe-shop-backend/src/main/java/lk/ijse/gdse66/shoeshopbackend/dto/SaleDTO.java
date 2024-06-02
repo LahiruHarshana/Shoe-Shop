@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,10 +14,9 @@ import java.util.List;
  * @mailto : lharshana2002@gmail.com
  * @created : 2024-04-23, Tuesday
  **/
-
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 public class SaleDTO {
     private String saleId;
     private Double subTotal;
@@ -31,4 +29,5 @@ public class SaleDTO {
     private Boolean isDemo;
     private List<InventoryDTO> inventories;
     private Integer getqty;
+
 }

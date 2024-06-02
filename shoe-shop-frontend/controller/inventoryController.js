@@ -256,7 +256,7 @@ function loadItems() {
             });
             $('#tbl-item-body').html(html);
             setEvents();
-            // initializeTable();
+            //initializeTable();
         }, error: function (error) {
             console.log(error);
         }

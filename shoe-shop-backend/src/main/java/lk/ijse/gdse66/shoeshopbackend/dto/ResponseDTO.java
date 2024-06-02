@@ -9,10 +9,11 @@ import java.io.Serializable;
 import java.util.HashMap;
 
 /**
- * @author Dewmith Mihisara
- * @date 2024-04-03
- * @since 0.0.1
- */
+ * @author : L.H.J
+ * @File: ResponseDTO
+ * @mailto : lharshana2002@gmail.com
+ * @created : 2024-04-23, Tuesday
+ **/
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

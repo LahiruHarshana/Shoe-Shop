@@ -1,25 +1,20 @@
 package lk.ijse.gdse66.shoeshopbackend.entity;
 
 import jakarta.persistence.*;
-import lk.ijse.gdse66.shoeshopbackend.dto.SaleDetailsDTO;
 import lk.ijse.gdse66.shoeshopbackend.enums.PaymentMethod;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
  * @author : L.H.J
  * @File: Sale
  * @mailto : lharshana2002@gmail.com
- * @created : 2024-04-21, Sunday
+ * @created : 2024-04-23, Tuesday
  **/
 @Data
 @Entity
@@ -28,7 +23,10 @@ import java.util.List;
 public class Sale {
     @Id
     private String saleId;
+//    private String itemDescription;
     private Integer getqty;
+//    private Integer size;
+//    private Double unitPrice;
     private Double subTotal;
     private String customerName;
     private String cashierName;
@@ -46,11 +44,6 @@ public class Sale {
     @JoinColumn(name = "username", referencedColumnName = "username")
     private User user;
 
-    @ManyToMany
-    @JoinTable(
-            name = "sale_inventory",
-            joinColumns = @JoinColumn(name = "sale_id"),
-            inverseJoinColumns = @JoinColumn(name = "inventory_id")
-    )
-    private List<Inventory> inventories;
+    @OneToMany(mappedBy = "sale")
+    private List<SaleInventory> saleInventories;
 }

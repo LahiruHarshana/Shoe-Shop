@@ -11,6 +11,32 @@
     <link rel="stylesheet" href="../../assets/css/index.css">
     <style>
 
+        #back{
+            background:url("../../assets/images/colorful-sneaker-is-being-spray-painted-with-purple-spray-paint.jpg");
+            background-size:cover;
+            background-position:center;
+        }
+        .bg-primary {
+            background-color: #00ADB5!important;
+            color: white;
+        }
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            background-color: transparent;
+            border: 1px solid #00ADB5;
+        }
+        .table th,
+        .table td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #00ADB5;
+            color: #333;
+        }
+        .table-hover tbody tr:hover {
+            background-color: rgba(0, 173, 181, 0.2);
+        }
+
         ::-webkit-scrollbar {
             width: 0.4vw;
         }
@@ -140,9 +166,17 @@
                     <span class="title">Manager</span>
                 </a>
             </li>
+            <li>
+                <a href="sale.html">
+                        <span class="icon">
+                            <ion-icon name="person-circle-outline"></ion-icon>
+                        </span>
+                    <span class="title">Sale</span>
+                </a>
+            </li>
         </ul>
     </div>
-    <div class="main">
+    <div id="back" class="main">
         <div class="topbar">
             <div class="toggle">
                 <ion-icon name="menu-outline"></ion-icon>
@@ -200,10 +234,7 @@
                     <th class="text-center">Action</th>
                 </tr>
                 </tfoot>
-            </table>
-
-        </section>
-
+            </table>        </section>
     </div>
 
     <div class="modal fade" id="inventory-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

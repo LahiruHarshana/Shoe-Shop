@@ -56,9 +56,9 @@
         }
     </style>
 </head>
-<body>
+<body style="background: transparent !important;">
 
-<div>
+<div style="background: transparent !important;">
     <div class="navigation">
         <ul>
             <li>
@@ -141,6 +141,14 @@
                     <span class="title">Manager</span>
                 </a>
             </li>
+            <li>
+                <a href="sale.html">
+                        <span class="icon">
+                            <ion-icon name="person-circle-outline"></ion-icon>
+                        </span>
+                    <span class="title">Sale</span>
+                </a>
+            </li>
         </ul>
     </div>
     <div id="back" class="main">
@@ -155,42 +163,41 @@
         </div>
         <div id="" class="w-100">
             <section class="mt-2 container-fluid d-flex justify-content-end">
-                <button class="btn" id="btn-add-customer" style="height: 35px" type="button">Add loyalty Customer
-                </button>
+                <button class="btn" id="btn-add-customer" style="height: 35px" type="button">Add loyalty Custome</button>
             </section>
             <section class="p-3">
-                <table id="tbl-customer" class="table table-hover table-striped" style="width:100%">
-                    <thead class="bg-primary mb-2">
-                    <tr class="bg-primary rounded-2" style="font-size: 13px">
-                        <th class="text-center bg-primary text-white">ID</th>
-                        <th class="text-center bg-primary text-white">Name</th>
-                        <th class="text-center bg-primary text-white">Gender</th>
-                        <th class="text-center bg-primary text-white">Join date</th>
-                        <th class="text-center bg-primary text-white">DOB</th>
-                        <th class="text-center bg-primary text-white">Last Perches</th>
-                        <th class="text-center bg-primary text-white">Total Points</th>
-                        <th class="text-center bg-primary text-white">Contact Number</th>
-                        <th class="text-center bg-primary text-white">Level</th>
-                        <th class="text-center bg-primary text-white">Email</th>
-                        <th class="text-center bg-primary text-white">Address</th>
-                        <th class="text-center bg-primary text-white">Action</th>
+                <table id="tbl-customer" class="table table-hover table-striped" style="background: transparent !important;width: 95%">
+                    <thead style="backdrop-filter: blur(20px)" class="">
+                    <tr class=" rounded-2" style="font-size: 13px">
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">ID</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">Name</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">Gender</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">Join date</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">DOB</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">Last Perches</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">Total Points</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">Contact Number</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">Level</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">Email</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">Address</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">Action</th>
                     </tr>
                     </thead>
-                    <tbody class="mt-5" id="tbl-customer-body" style="font-size: 12px"></tbody>
-                    <tfoot>
+                    <tbody style="font-size: 14px; background: transparent !important;" class="mt-5" id="tbl-customer-body" style="font-size: 12px"></tbody>
+                    <tfoot style="backdrop-filter: blur(20px)">
                     <tr style="font-size: 13px">
-                        <th class="text-center">ID</th>
-                        <th class="text-center">Name</th>
-                        <th class="text-center">Gender</th>
-                        <th class="text-center">Join date</th>
-                        <th class="text-center">DOB</th>
-                        <th class="text-center">Last Perches</th>
-                        <th class="text-center">Total Points</th>
-                        <th class="text-center">Contact Number</th>
-                        <th class="text-center">Level</th>
-                        <th class="text-center">Email</th>
-                        <th class="text-center">Address</th>
-                        <th class="text-center">Action</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">ID</th>
+                        <th style="background: transparent !important; cxolor: #FFFFFF!important;" class="text-center text-white">Name</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">Gender</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">Join date</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">DOB</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">Last Perches</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">Total Points</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">Contact Number</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">Level</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">Email</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">Address</th>
+                        <th style="background: transparent !important; color: #FFFFFF!important;" class="text-center text-white">Action</th>
                     </tr>
                     </tfoot>
                 </table>
@@ -267,7 +274,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 <script src="../../assets/js/jquery.js"></script>

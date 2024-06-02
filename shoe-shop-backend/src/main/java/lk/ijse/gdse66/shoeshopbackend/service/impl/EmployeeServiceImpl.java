@@ -41,11 +41,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private final UserRepo userRepo;
 
+    private final EmailService emailService;
     private final PasswordEncoder bCryptPasswordEncoder;
 
     private final BranchRepo branchRepo;
 
-    public EmployeeServiceImpl(UploadService uploadService, ModelMapper mapper, EmployeeRepo employeeRepo, BranchService branchService, UserRepo userRepo, PasswordEncoder bCryptPasswordEncoder, BranchRepo branchRepo) {
+    public EmployeeServiceImpl(UploadService uploadService, ModelMapper mapper, EmployeeRepo employeeRepo, BranchService branchService, UserRepo userRepo, PasswordEncoder bCryptPasswordEncoder, BranchRepo branchRepo, EmailService emailService) {
         this.uploadService = uploadService;
         this.mapper = mapper;
         this.employeeRepo = employeeRepo;
@@ -53,12 +54,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         this.userRepo = userRepo;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.branchRepo = branchRepo;
+        this.emailService = emailService;
     }
-
-    //f5a24919
-
-    //fefe3cc8
-
 
     @Transactional
     @Override
@@ -81,12 +78,102 @@ public class EmployeeServiceImpl implements EmployeeService {
         User user = new User();
         String password = UUID.randomUUID().toString().substring(0, 8);
         System.out.println("password = " + password);
+        emailService.sendHtmlEmail(employee.getEmail(), "Account Created", generateHtmlContent(employee.getEmpName(), employee.getEmail(), password));
         user.setUsername(employee.getEmail());
         user.setPassword(bCryptPasswordEncoder.encode(password));
         user.setRole(employee.getRole());
         user.setEmployee(map);
         userRepo.save(user);
         return true;
+    }
+
+    public String generateHtmlContent(String employeeName, String email, String password) {
+        return "<!DOCTYPE html>"
+                + "<html lang=\"en\">"
+                + "<head>"
+                + "<meta charset=\"UTF-8\">"
+                + "<title>Welcome to Shoe Shop</title>"
+                + "<style>"
+                + "body {"
+                + "    font-family: 'Arial', sans-serif;"
+                + "    background-color: #f7f7f7;"
+                + "    margin: 0;"
+                + "    padding: 0;"
+                + "    color: #333;"
+                + "}"
+                + ".container {"
+                + "    width: 100%;"
+                + "    max-width: 600px;"
+                + "    margin: 0 auto;"
+                + "    background-color: #ffffff;"
+                + "    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);"
+                + "    border-radius: 8px;"
+                + "    overflow: hidden;"
+                + "}"
+                + ".header {"
+                + "    background-color: #007bff;"
+                + "    color: #ffffff;"
+                + "    padding: 20px;"
+                + "    text-align: center;"
+                + "}"
+                + ".header h1 {"
+                + "    margin: 0;"
+                + "    font-size: 24px;"
+                + "}"
+                + ".header img {"
+                + "    max-width: 50px;"
+                + "    margin-bottom: 10px;"
+                + "}"
+                + ".content {"
+                + "    padding: 20px;"
+                + "}"
+                + ".content p {"
+                + "    line-height: 1.6;"
+                + "    margin: 15px 0;"
+                + "}"
+                + ".content .cta {"
+                + "    display: block;"
+                + "    width: fit-content;"
+                + "    margin: 20px auto;"
+                + "    padding: 10px 20px;"
+                + "    background-color: #007bff;"
+                + "    color: #ffffff;"
+                + "    text-decoration: none;"
+                + "    border-radius: 5px;"
+                + "}"
+                + ".footer {"
+                + "    background-color: #f1f1f1;"
+                + "    text-align: center;"
+                + "    padding: 10px;"
+                + "    font-size: 12px;"
+                + "    color: #666666;"
+                + "}"
+                + "</style>"
+                + "</head>"
+                + "<body>"
+                + "<div class=\"container\">"
+                + "<div class=\"header\">"
+                + "<img src=\"https://cdn1.vectorstock.com/i/1000x1000/59/95/shoe-shop-logo-concept-vector-24175995.jpg\" alt=\"Shoe Shop Logo\">"
+                + "<h1>Welcome to Shoe Shop</h1>"
+                + "</div>"
+                + "<div class=\"content\">"
+                + "<h2>Hello " + employeeName + ",</h2>"
+                + "<p>We are thrilled to have you on board as part of our team at Shoe Shop!</p>"
+                + "<p>Your account has been successfully created. Here are your account details:</p>"
+                + "<p><strong>Username:</strong> " + email + "</p>"
+                + "<p><strong>Password:</strong> " + password + "</p>"
+                + "<p>Please keep this information safe and do not share it with anyone.</p>"
+                + "<p>You can now log in to our system using the above credentials and start exploring your new workplace.</p>"
+                + "<p>We are excited to see the contributions you'll bring to our team. Welcome aboard!</p>"
+                + "<p>Best regards,<br>Shoe Shop Team</p>"
+                + "</div>"
+                + "<div class=\"footer\">"
+                + "<p>&copy; 2024 Shoe Shop. All rights reserved.</p>"
+                + "<p>Shoe Shop, 1234 Elm Street, City, State, ZIP</p>"
+                + "</div>"
+                + "</div>"
+                + "</body>"
+                + "</html>";
     }
 
     @Override

@@ -11,6 +11,89 @@
     <link rel="stylesheet" href="../../assets/css/index.css">
     <style>
 
+
+        #back{
+            background:url("../../assets/images/martin-katler-Y4fKN-RlMV4-unsplash.jpg");
+            background-size:cover;
+            background-position:center;
+        }
+        .bg-white-blur {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .bg-white-blur:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .employee-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .employee-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .employee-header {
+            position: relative;
+            background: linear-gradient(to bottom right, #6a11cb 0%, #2575fc 100%);
+            padding: 20px;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .employee-header img {
+            border: 3px solid #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .card-text {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .text-primary {
+            color: #007bff;
+        }
+
+        .row {
+            margin-bottom: 10px;
+        }
+
+        .col-6 {
+            padding: 5px;
+        }
+
+        .text-muted {
+            color: #999;
+        }
+
+        .btn-edit-employee {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-edit-employee:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
         ::-webkit-scrollbar {
             width: 0.4vw;
         }
@@ -34,24 +117,6 @@
             width: 100%;
             position: fixed;
             z-index: -1;
-        }
-
-        @keyframes changeImage {
-            0% {
-                background-image: url('../../assets/images/admin-bg.jpg');
-            }
-            25% {
-                /*background-image: url('../../assets/images/admin-bg-2.jpg');*/
-            }
-            50% {
-                /*background-image: url('../../assets/images/admin-bg-3.jpg');*/
-            }
-            75% {
-                /*background-image: url('../../assets/images/admin-bg-4.jpg');*/
-            }
-            100% {
-                /*background-image: url('../../assets/images/admin-bg.jpg');*/
-            }
         }
 
         .employee-header{
@@ -154,9 +219,17 @@
                     <span class="title">Manager</span>
                 </a>
             </li>
+            <li>
+                <a href="sale.html">
+                        <span class="icon">
+                            <ion-icon name="person-circle-outline"></ion-icon>
+                        </span>
+                    <span class="title">Sale</span>
+                </a>
+            </li>
         </ul>
     </div>
-    <div class="main">
+    <div id="back" class="main">
         <div class="topbar">
             <div class="toggle">
                 <ion-icon name="menu-outline"></ion-icon>

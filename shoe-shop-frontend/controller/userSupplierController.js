@@ -75,25 +75,24 @@ function loadSuppliers() {
         },
         success: function (data) {
             console.log(data);
-            let supplier = data;
             let html = '';
-            supplier.forEach(supplier => {
+            data.forEach(supplier => {
                 html += `
-               <tr>
-                   <td class="text-center">${supplier.supplierCode}</td>
-                   <td class="text-center">${supplier.supplierName}</td>
-                   <td class="text-center">${supplier.supplierCategory}</td>
-                   <td class="text-center">${supplier.contact.land}</td>
-                   <td class="text-center">${supplier.contact.mobile}</td>
-                   <td class="text-center">${supplier.email}</td>
-                   <td class="text-center">${supplier.address.lane}, ${supplier.address.mainCity}, ${supplier.address.mainState}, ${supplier.address.mainCountry}, ${supplier.address.postalCode}</td>
-                   <td class="text-center">
-                       <div class="d-flex">
-                           <button class="btn btn-sm btn-primary btn-supplier-edit"><i class="bi bi-pencil-square"></i></button>
-                           <button class="btn btn-sm btn-danger ms-2 btn-supplier-delete"><i class="bi bi-person-x-fill"></i></button>
-                       </div>
-                   </td>
-               </tr>
+                <tr class="supplier-row">
+                    <td class="text-center align-middle">${supplier.supplierCode}</td>
+                    <td class="text-center align-middle">${supplier.supplierName}</td>
+                    <td class="text-center align-middle">${supplier.supplierCategory}</td>
+                    <td class="text-center align-middle">${supplier.contact.land}</td>
+                    <td class="text-center align-middle">${supplier.contact.mobile}</td>
+                    <td class="text-center align-middle">${supplier.email}</td>
+                    <td class="text-center align-middle">${supplier.address.lane}, ${supplier.address.mainCity}, ${supplier.address.mainState}, ${supplier.address.mainCountry}, ${supplier.address.postalCode}</td>
+                    <td class="text-center align-middle">
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-sm btn-primary btn-supplier-edit"><i class="bi bi-pencil-square"></i></button>
+                            <button class="btn btn-sm btn-danger btn-supplier-delete"><i class="bi bi-person-x-fill"></i></button>
+                        </div>
+                    </td>
+                </tr>
                 `;
             });
             $('#tbl-supplier-body').html(html);

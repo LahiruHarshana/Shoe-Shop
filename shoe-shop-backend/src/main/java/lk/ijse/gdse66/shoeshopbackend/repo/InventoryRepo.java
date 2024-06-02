@@ -1,6 +1,5 @@
 package lk.ijse.gdse66.shoeshopbackend.repo;
 
-
 import lk.ijse.gdse66.shoeshopbackend.entity.Inventory;
 import lk.ijse.gdse66.shoeshopbackend.enums.ItemStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,7 +12,7 @@ import java.util.List;
  * @author : L.H.J
  * @File: InventoryRepo
  * @mailto : lharshana2002@gmail.com
- * @created : 2024-05-12, Sunday
+ * @created : 2024-04-23, Tuesday
  **/
 @Repository
 public interface InventoryRepo extends JpaRepository<Inventory, String> {

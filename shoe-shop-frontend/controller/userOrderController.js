@@ -63,33 +63,33 @@ function loadProducts() {
             for (const product of response) {
                 $('#product-content').append(`
         <div class="col mt-3 z-1">
-            <div class="card h-100">
-                 <img src="https://drive.google.com/thumbnail?id=${product.itemPicture}&sz=w1000" width="100" height="120" class="card-img-top" alt="...">
-                 <div class="card-body">
+            <div class="card h-100" style="background-color: #FFFFFF; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                 <img src="https://drive.google.com/thumbnail?id=${product.itemPicture}&sz=w1000" width="100" height="120" class="card-img-top" alt="..." style="border-radius: 10px 10px 0 0;">
+                 <div class="card-body" style="padding: 20px;">
                  <div class="d-flex justify-content-sm-between">
-                 <small>Code</small>
-                 <small>${product.itemCode}</small>
+                 <small style="color: #393E46;">Code</small>
+                 <small style="color: #393E46;">${product.itemCode}</small>
                  </div>
                   
                      <div class="d-flex justify-content-sm-between">
-                         <small>${product.itemDescription}</small>
-                         <small>${product.itemGender}</small>
+                         <small style="color: #393E46;">${product.itemDescription}</small>
+                         <small style="color: #393E46;">${product.itemGender}</small>
                      </div>
                      <div class="d-flex justify-content-sm-between">
-                         <small>Size: ${product.size}</small>
+                         <small style="color: #393E46;">Size: ${product.size}</small>
                          
                      </div>
                       <div class="d-flex justify-content-sm-between">
-                         <small class="text-danger">Discount :</small>
-                         <small class="text-danger">${product.discount}%</small>
+                         <small class="text-danger" style="color: #FF0000;">Discount :</small>
+                         <small class="text-danger" style="color: #FF0000;">${product.discount}%</small>
                      </div>
                      <div class="d-flex justify-content-sm-between">
-                         <small class="text-primary">QtyOnHand :</small>
-                         <small class="text-primary">${product.qtyOnHand}</small>  
+                         <small class="text-primary" style="color: #00ADB5;">QtyOnHand :</small>
+                         <small class="text-primary" style="color: #00ADB5;">${product.qtyOnHand}</small>  
                      </div>
                      
-                     <h5 class="card-title m-2 text-center">Rs. ${product.sellingPrice} /=</h5>
-                     <button class="btn btn-primary w-100 btn-add-cart">Add to cart</button>
+                     <h5 class="card-title m-2 text-center" style="color: #00ADB5;">Rs. ${product.sellingPrice} /=</h5>
+                     <button class="btn btn-primary w-100 btn-add-cart" style="background-color: #00ADB5; color: #FFFFFF; border: none; padding: 10px; border-radius: 10px;">Add to cart</button>
                 </div>
             </div>
         </div>
@@ -101,7 +101,6 @@ function loadProducts() {
         }
     });
 }
-
 loadProducts();
 
 
@@ -120,51 +119,56 @@ $('#brand-list').on('click', 'button', function () {
 
 function renderProductForBrand(brand) {
     $.ajax({
-        url: BASE_URL + 'api/v1/inventory/available/'+brand,
+        url: BASE_URL + 'api/v1/inventory/available/' + brand,
         headers: {
             Authorization: 'Bearer ' + user.jwt
         },
         type: 'GET',
-        success: function (response) {
+        success: function(response) {
             productList = response;
             $('#product-content').empty();
             for (const product of response) {
                 $('#product-content').append(`
-             <div class="col mt-3 z-1">
-                <div class="card h-100">
-                 <img src="https://drive.google.com/thumbnail?id=${product.itemPicture}&sz=w1000" width="100" height="120" class="card-img-top" alt="...">
-                 <div class="card-body">
-                 <small>${product.itemCode}</small>
+                            <div class="col mt-3 z-1">
+            <div class="card h-100" style="background-color: #FFFFFF; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                 <img src="https://drive.google.com/thumbnail?id=${product.itemPicture}&sz=w1000" width="100" height="120" class="card-img-top" alt="..." style="border-radius: 10px 10px 0 0;">
+                 <div class="card-body" style="padding: 20px;">
+                 <div class="d-flex justify-content-sm-between">
+                 <small style="color: #393E46;">Code</small>
+                 <small style="color: #393E46;">${product.itemCode}</small>
+                 </div>
+                  
                      <div class="d-flex justify-content-sm-between">
-                         <small>${product.itemDescription}</small>
-                         <small>${product.itemGender}</small>
+                         <small style="color: #393E46;">${product.itemDescription}</small>
+                         <small style="color: #393E46;">${product.itemGender}</small>
                      </div>
                      <div class="d-flex justify-content-sm-between">
-                         <small>Size: ${product.size}</small>
-                         <small>1k Sold</small>
+                         <small style="color: #393E46;">Size: ${product.size}</small>
+                         
                      </div>
                       <div class="d-flex justify-content-sm-between">
-                         <small class="text-danger">Discount :</small>
-                         <small class="text-danger">${product.discount}%</small>
+                         <small class="text-danger" style="color: #FF0000;">Discount :</small>
+                         <small class="text-danger" style="color: #FF0000;">${product.discount}%</small>
                      </div>
                      <div class="d-flex justify-content-sm-between">
-                         <small class="text-primary">QtyOnHand :</small>
-                         <small class="text-primary">${product.qtyOnHand}</small>
+                         <small class="text-primary" style="color: #00ADB5;">QtyOnHand :</small>
+                         <small class="text-primary" style="color: #00ADB5;">${product.qtyOnHand}</small>  
                      </div>
                      
-                     <h5 class="card-title m-2 text-center">Rs. ${product.sellingPrice} /=</h5>
-                     <button class="btn btn-primary w-100 btn-add-cart">Add to cart</button>
+                     <h5 class="card-title m-2 text-center" style="color: #00ADB5;">Rs. ${product.sellingPrice} /=</h5>
+                     <button class="btn btn-primary w-100 btn-add-cart" style="background-color: #00ADB5; color: #FFFFFF; border: none; padding: 10px; border-radius: 10px;">Add to cart</button>
                 </div>
             </div>
-        </div>`);
+        </div>
+`);
             }
             setEvent();
-        }, error: function (error) {
+        },
+        error: function(error) {
             console.log(error);
         }
     });
 }
-
 $('#btn-move-right').on('click', function () {
     $('#brand-list').animate({
         scrollLeft: '+=500px'
@@ -391,26 +395,7 @@ $('#btn-proceed-order').on('click', function () {
     if (paymentMethod === 'CASH') {
         $("div.spanner").addClass("show");
         $("div.overlay").addClass("show");
-        if (cart.length === 0 || subTotal === 0 || subTotal < parseFloat(txtCash)) {
-            $("div.spanner").removeClass("show");
-            $("div.overlay").removeClass("show");
-            const Toast = Swal.mixin({
-                toast: true,
-                position: "top-end",
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.onmouseenter = Swal.stopTimer;
-                    toast.onmouseleave = Swal.resumeTimer;
-                }
-            });
-            Toast.fire({
-                icon: "warning",
-                title: 'Cannot proceed without any items in the cart'
-            });
-            return;
-        }
+
 
         let order = {
             customerContact: contact,
@@ -477,26 +462,6 @@ $('#btn-payment').on('click', function () {
 
     $("div.spanner").addClass("show");
     $("div.overlay").addClass("show");
-    if (cart.length === 0 || subTotal === 0) {
-        $("div.spanner").removeClass("show");
-        $("div.overlay").removeClass("show");
-        const Toast = Swal.mixin({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.onmouseenter = Swal.stopTimer;
-                toast.onmouseleave = Swal.resumeTimer;
-            }
-        });
-        Toast.fire({
-            icon: "warning",
-            title: 'Cannot proceed without any items in the cart'
-        });
-        return;
-    }
 
     let order = {
         customerContact: contact,

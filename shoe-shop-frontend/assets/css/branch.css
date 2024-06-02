@@ -19,3 +19,25 @@
     color: black;
 }
 
+/* Add this to your common CSS file */
+
+.table-transparent {
+    background: transparent !important;
+}
+
+.table-hover thead {
+    backdrop-filter: blur(20px);
+}
+
+.table-hover thead th {
+    background: transparent !important;
+    color: #FFFFFF !important;
+    font-size: 13px;
+}
+
+.table-hover tbody {
+    font-size: 14px;
+    background: transparent !important;
+}
+
+

@@ -35,24 +35,6 @@
             position: fixed;
             z-index: -1;
         }
-
-        @keyframes changeImage {
-            0% {
-                background-image: url('../../assets/images/admin-bg.jpg');
-            }
-            25% {
-                /*background-image: url('../../assets/images/admin-bg-2.jpg');*/
-            }
-            50% {
-                /*background-image: url('../../assets/images/admin-bg-3.jpg');*/
-            }
-            75% {
-                /*background-image: url('../../assets/images/admin-bg-4.jpg');*/
-            }
-            100% {
-                /*background-image: url('../../assets/images/admin-bg.jpg');*/
-            }
-        }
     </style>
     <link rel="stylesheet" href="../../assets/css/branch.css">
 </head>
@@ -140,6 +122,14 @@
                     <span class="title">Manager</span>
                 </a>
             </li>
+            <li>
+                <a href="sale.html">
+                        <span class="icon">
+                            <ion-icon name="person-circle-outline"></ion-icon>
+                        </span>
+                    <span class="title">Sale</span>
+                </a>
+            </li>
         </ul>
     </div>
     <div id="back" class="main">
@@ -166,20 +156,20 @@
                                 <input type="text" class="form-control w-25" placeholder="Search">
                             </div>
                             <div style="background: transparent !important;" class="card-body">
-                                <table  style="background: transparent !important;" class="table table-hover">
-                                    <thead style="backdrop-filter: blur(20px)">
-                                    <tr style="font-size: 13px">
-                                        <th style="background: transparent !important; color: #FFFFFF!important;" scope="col">Branch Id</th>
-                                        <th style="background: transparent !important;  color: #FFFFFF!important;" scope="col">Branch Name</th>
-                                        <th style="background: transparent !important;  color: #FFFFFF!important;" scope="col">Branch Contact</th>
-                                        <th style="background: transparent !important;  color: #FFFFFF!important;" scope="col">Branch Manager</th>
-                                        <th style="background: transparent !important; color: #FFFFFF!important;" scope="col">Employee Count</th>
-                                        <th style="background: transparent !important; color: #FFFFFF!important;" scope="col">Branch Address</th>
-                                        <th style="background: transparent !important; color: #FFFFFF!important;" scope="col">Branch Opened Date</th>
-                                        <th style="background: transparent !important; color: #FFFFFF!important;" scope="col">Action</th>
+                                <table class="table table-hover table-transparent">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Branch Id</th>
+                                        <th scope="col">Branch Name</th>
+                                        <th scope="col">Branch Contact</th>
+                                        <th scope="col">Branch Manager</th>
+                                        <th scope="col">Employee Count</th>
+                                        <th scope="col">Branch Address</th>
+                                        <th scope="col">Branch Opened Date</th>
+                                        <th scope="col">Action</th>
                                     </tr>
                                     </thead>
-                                    <tbody style="font-size: 14px; background: transparent !important;" id="tbl-branch"></tbody>
+                                    <tbody id="tbl-branch"></tbody>
                                 </table>
                             </div>
                         </section>

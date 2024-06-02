@@ -55,7 +55,7 @@ public class SaleServiceImpl implements SaleService {
             inventories.add(inventoryRepo.save(entity));
         }));
         sale.setSaleId(IDGenerator.generateSaleId());
-        sale.setInventories(inventories);
+        //sale.setSaleInventories(inventories);
         sale.setUser(userRepo.findById(saleDTO.getCashierName()).get());
         sale.setSubTotal(saleDTO.getSubTotal());
         if (!saleDTO.getIsDemo()) {
