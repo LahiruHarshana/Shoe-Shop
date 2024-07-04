@@ -5,12 +5,12 @@ The Shoe Shop project is developed as part of the GDSE Program AAD module final 
 
 ## Technologies Used
 - **Frontend**:
-    - HTML
-    - CSS
-    - Bootstrap!
--**Backend**:
-    - Spring Boot
-    - MySQL
+  - HTML
+  - CSS
+  - Bootstrap
+- **Backend**:
+  - Spring Boot
+  - MySQL
 
 ## Features
 - **Product Management**: Add, update, delete, and view products.
