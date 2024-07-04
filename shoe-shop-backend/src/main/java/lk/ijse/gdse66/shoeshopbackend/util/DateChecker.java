@@ -37,9 +37,11 @@ public class DateChecker {
         System.out.println("DateChecker created");
         this.customerRepo = customerRepo;
         this.emailService = emailService;
-        checkAndProcessBirthdays();
+        //checkAndProcessBirthdays();
     }
 
+
+    @Scheduled(cron = "0 0 0 * * *")
     public void checkAndProcessBirthdays() {
         LocalDate today = LocalDate.now();
         List<Customer> allCustomers = customerRepo.findAll();
